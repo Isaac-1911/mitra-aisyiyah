@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandiri — Mitra Aisyiyah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F5F1E7',
+          'cream-2': '#EFEADB',
+          navy: { DEFAULT: '#1C3A61', dark: '#122C4C', deep: '#0E223C' },
+          rust: { DEFAULT: '#BE5F2E', dark: '#A24F24', light: '#D97C46' },
+          ink: '#201C16',
+          stone: '#6E6659',
+          line: '#DCD5C3',
+          leaf: { DEFAULT: '#3E6B4F', light: '#E9F1EA' },
+          amber: { DEFAULT: '#AD7B23', light: '#F6EFDE' },
+          alert: { DEFAULT: '#A6392B', light: '#F6E9E6' },
+        },
+        fontFamily: {
+          serif: ['Lora', 'Georgia', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F5F1E7; }
+  .tracking-widest2 { letter-spacing: 0.14em; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; letter-spacing:0.14em; text-transform:uppercase; font-size:0.75rem; }
+  .nav-link { white-space:nowrap; }
+  ::selection { background:#BE5F2E; color:#fff; }
+  .btn-focus:focus-visible { outline:3px solid #1C3A61; outline-offset:2px; }
+  .fade-up { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .fade-up.in { opacity:1; transform:translateY(0); }
+  .pillar-card { transition: transform .35s ease; }
+  .pillar-card:hover { transform: translateY(-3px); }
+  input[type=number] {
+    background:#F5F1E7; border:1px solid #DCD5C3; padding:0.85rem 1rem; font-size:1.05rem; width:100%;
+    font-family:'JetBrains Mono',monospace;
+  }
+  input[type=number]:focus { outline:none; border-color:#1C3A61; }
+  .bar-track { background:#DCD5C3; height:10px; overflow:hidden; }
+  .bar-fill { height:100%; transition: width .5s ease, background-color .5s ease; }
+</style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+<!-- ================= NAVBAR ================= -->
+<header class="sticky top-0 z-50 bg-navy-dark text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between gap-4 py-4">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <span class="w-10 h-10 flex items-center justify-center bg-rust text-white font-mono font-bold text-sm">MA</span>
+        <span class="leading-tight">
+          <span class="block font-serif font-semibold text-lg tracking-wide">MITRA AISYIYAH</span>
+          <span class="block eyebrow text-cream/60 text-[10px]">Digital Kadarkum</span>
+        </span>
+      </a>
+      <nav class="hidden xl:flex items-center gap-6 font-mono text-[12.5px] tracking-widest2 uppercase">
+        <a href="index.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Beranda</a>
+        <a href="belajar.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Belajar</a>
+        <a href="cek-putuskan.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Cek &amp; Putuskan</a>
+        <a href="jika-terjerat.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Jika Terjerat</a>
+        <a href="pendampingan.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Pendampingan</a>
+        <a href="mandiri.html" class="nav-link border-b-2 border-rust text-rust pb-1">Mandiri</a>
+        <a href="mitra.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Mitra</a>
+      </nav>
+      <div class="hidden xl:block shrink-0">
+        <a href="jika-terjerat.html" class="btn-focus inline-flex items-center gap-2 bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-5 py-3">
+          <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          Butuh Bantuan
+        </a>
+      </div>
+      <button id="menuBtn" class="xl:hidden btn-focus p-2" aria-label="Buka menu" aria-expanded="false">
+        <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden xl:hidden border-t border-white/10 bg-navy-dark">
+    <nav class="flex flex-col px-6 py-4 gap-1 font-mono text-sm tracking-widest2 uppercase">
+      <a href="index.html" class="py-3 text-cream/80 border-b border-white/10">Beranda</a>
+      <a href="belajar.html" class="py-3 text-cream/80 border-b border-white/10">Belajar</a>
+      <a href="cek-putuskan.html" class="py-3 text-cream/80 border-b border-white/10">Cek &amp; Putuskan</a>
+      <a href="jika-terjerat.html" class="py-3 text-cream/80 border-b border-white/10">Jika Terjerat</a>
+      <a href="pendampingan.html" class="py-3 text-cream/80 border-b border-white/10">Pendampingan</a>
+      <a href="mandiri.html" class="py-3 text-rust border-b border-white/10">Mandiri</a>
+      <a href="mitra.html" class="py-3 text-cream/80 border-b border-white/10">Mitra</a>
+      <a href="jika-terjerat.html" class="mt-3 bg-rust text-white text-center py-3">Butuh Bantuan</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="max-w-2xl">
+      <p class="eyebrow text-rust mb-5">Mandiri</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink leading-[1.1]">
+        Bebas dari jerat pinjol adalah awal, bukan akhir.
+      </h1>
+      <p class="text-stone text-[15px] mt-6 leading-relaxed">
+        Kemandirian ekonomi dibangun pelan-pelan — lewat kebiasaan mengatur uang, usaha produktif, dan komunitas yang saling menguatkan. Halaman ini menyiapkan langkah setelah Anda keluar dari masalah pinjaman.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4 PILAR ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up eyebrow text-stone mb-10">Empat Pilar Kemandirian Ekonomi</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-line">
+      <div class="pillar-card fade-up border-r border-b border-line bg-white/40 p-7 min-h-[210px] flex flex-col justify-between">
+        <span class="font-mono text-xs text-rust">01</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Literasi Keuangan</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Memahami anggaran, menabung, dan membedakan kebutuhan dari keinginan sebagai kebiasaan sehari-hari.</p>
+        </div>
+      </div>
+      <div class="pillar-card fade-up border-r border-b border-line bg-white/40 p-7 min-h-[210px] flex flex-col justify-between">
+        <span class="font-mono text-xs text-rust">02</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Usaha Produktif</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Mengembangkan keterampilan atau usaha mikro sebagai sumber penghasilan tambahan yang stabil.</p>
+        </div>
+      </div>
+      <div class="pillar-card fade-up border-r border-b border-line bg-white/40 p-7 min-h-[210px] flex flex-col justify-between">
+        <span class="font-mono text-xs text-rust">03</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Tabungan &amp; Proteksi</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Membangun dana darurat kecil secara konsisten agar tidak kembali bergantung pada pinjaman mendadak.</p>
+        </div>
+      </div>
+      <div class="pillar-card fade-up border-r border-b border-line bg-navy text-cream p-7 min-h-[210px] flex flex-col justify-between">
+        <span class="font-mono text-xs text-rust-light">04</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Jejaring Komunitas</h3>
+          <p class="text-[13px] text-cream/70 leading-relaxed">Terhubung dengan sesama anggota Aisyiyah dan koperasi komunitas untuk saling mendukung dan berbagi peluang.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KALKULATOR RASIO UTANG AMAN ================= -->
+<section class="bg-navy-deep text-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+      <div class="fade-up">
+        <p class="eyebrow text-rust-light mb-3">Alat Bantu</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Kalkulator Rasio Utang Aman</h2>
+        <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Aturan umum: total cicilan bulanan sebaiknya tidak lebih dari 30% dari pendapatan bulanan Anda.</p>
+      </div>
+
+      <div class="fade-up">
+        <div class="bg-navy p-6 sm:p-8">
+          <div class="grid sm:grid-cols-2 gap-5 mb-6">
+            <div>
+              <label for="pendapatan" class="eyebrow text-cream/50 block mb-2">Pendapatan Bulanan (Rp)</label>
+              <input id="pendapatan" type="number" min="0" placeholder="Contoh: 3000000">
+            </div>
+            <div>
+              <label for="cicilan" class="eyebrow text-cream/50 block mb-2">Total Cicilan Bulanan (Rp)</label>
+              <input id="cicilan" type="number" min="0" placeholder="Contoh: 600000">
+            </div>
+          </div>
+
+          <div class="bar-track mb-3">
+            <div id="ratioBar" class="bar-fill bg-leaf" style="width:0%"></div>
+          </div>
+
+          <div class="flex items-center justify-between mb-5">
+            <span id="ratioLabel" class="font-mono text-sm text-cream/60">0% dari pendapatan</span>
+            <span id="ratioVerdict" class="font-serif text-lg font-semibold">—</span>
+          </div>
+
+          <p id="ratioNote" class="text-[13px] text-cream/60 leading-relaxed">Masukkan angka pendapatan dan cicilan untuk melihat hasilnya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANGKAH MEMBANGUN KEMANDIRIAN ================= -->
+<section class="bg-cream-2 border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-12 max-w-xl">
+      <p class="eyebrow text-rust mb-3">Langkah Praktis</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink">Mulai dari yang kecil, konsisten</h2>
+    </div>
+
+    <div class="space-y-px bg-line max-w-4xl">
+      <div class="fade-up bg-cream-2 flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">1</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Susun anggaran realistis</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Catat seluruh pemasukan dan pengeluaran bulanan, sekecil apa pun, agar Anda tahu ke mana uang benar-benar pergi.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream-2 flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">2</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Menabung walau sedikit</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Mulai dari nominal kecil yang konsisten setiap minggu. Dana darurat inilah yang mencegah Anda kembali ke pinjol saat kebutuhan mendesak muncul.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream-2 flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">3</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Ikuti pelatihan usaha mikro</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Bergabung dengan pelatihan keterampilan atau kewirausahaan yang diadakan Aisyiyah untuk membangun sumber penghasilan baru.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream-2 flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">4</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Bergabung dengan koperasi komunitas</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Koperasi simpan-pinjam berbasis komunitas menawarkan akses dana yang jauh lebih aman dan wajar dibanding pinjol.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA PENUTUP PERJALANAN ================= -->
+<section class="bg-navy text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 flex flex-wrap items-center justify-between gap-6">
+    <div>
+      <p class="eyebrow text-rust-light mb-3">Perjalanan Anda</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold max-w-lg">Dari sadar risiko hingga mandiri — Mitra Aisyiyah menemani setiap tahapnya.</h2>
+    </div>
+    <a href="mitra.html" class="btn-focus inline-flex items-center gap-2 bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-6 py-4 shrink-0">
+      Kenali Tim Kami
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy-deep text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-9 h-9 flex items-center justify-center bg-rust text-white font-mono font-bold text-xs">MA</span>
+          <span class="font-serif font-semibold">Mitra Aisyiyah</span>
+        </div>
+        <p class="text-cream/50 text-[13px] leading-relaxed max-w-xs">Platform edukasi dan pendampingan digital seputar pinjaman online, untuk mendukung kemandirian ekonomi perempuan.</p>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Halaman</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li><a href="index.html" class="hover:text-rust-light transition">Beranda</a></li>
+          <li><a href="belajar.html" class="hover:text-rust-light transition">Belajar</a></li>
+          <li><a href="cek-putuskan.html" class="hover:text-rust-light transition">Cek &amp; Putuskan</a></li>
+          <li><a href="jika-terjerat.html" class="hover:text-rust-light transition">Jika Terjerat</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Lainnya</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li><a href="pendampingan.html" class="hover:text-rust-light transition">Pendampingan</a></li>
+          <li><a href="mandiri.html" class="hover:text-rust-light transition">Mandiri</a></li>
+          <li><a href="mitra.html" class="hover:text-rust-light transition">Mitra</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Kontak Darurat</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li>Layanan OJK: 157</li>
+          <li>WhatsApp OJK: 081-157-157-157</li>
+          <li>hello@mitraaisyiyah.id</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap gap-3 justify-between text-[12px] text-cream/40">
+      <p>© 2026 Mitra Aisyiyah — Digital Kadarkum. Platform edukasi, bukan penyedia pinjaman.</p>
+      <p>Riset kolaborasi akademik.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  const revealEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach((el) => observer.observe(el));
+
+  // ---- Kalkulator Rasio Utang Aman ----
+  const pendapatanInput = document.getElementById('pendapatan');
+  const cicilanInput = document.getElementById('cicilan');
+  const ratioBar = document.getElementById('ratioBar');
+  const ratioLabel = document.getElementById('ratioLabel');
+  const ratioVerdict = document.getElementById('ratioVerdict');
+  const ratioNote = document.getElementById('ratioNote');
+
+  function updateRatio() {
+    const pendapatan = parseFloat(pendapatanInput.value) || 0;
+    const cicilan = parseFloat(cicilanInput.value) || 0;
+
+    if (pendapatan <= 0) {
+      ratioBar.style.width = '0%';
+      ratioLabel.textContent = '0% dari pendapatan';
+      ratioVerdict.textContent = '—';
+      ratioVerdict.className = 'font-serif text-lg font-semibold';
+      ratioNote.textContent = 'Masukkan angka pendapatan dan cicilan untuk melihat hasilnya.';
+      return;
+    }
+
+    const ratio = (cicilan / pendapatan) * 100;
+    const clamped = Math.min(ratio, 100);
+    ratioBar.style.width = clamped + '%';
+    ratioLabel.textContent = ratio.toFixed(1) + '% dari pendapatan';
+
+    if (ratio <= 30) {
+      ratioBar.className = 'bar-fill bg-leaf';
+      ratioVerdict.textContent = 'Aman';
+      ratioVerdict.className = 'font-serif text-lg font-semibold text-leaf-light';
+      ratioNote.textContent = 'Rasio cicilan Anda masih dalam batas wajar (di bawah 30% pendapatan). Tetap pertahankan kebiasaan ini.';
+    } else if (ratio <= 40) {
+      ratioBar.className = 'bar-fill bg-amber';
+      ratioVerdict.textContent = 'Waspada';
+      ratioVerdict.className = 'font-serif text-lg font-semibold text-amber-light';
+      ratioNote.textContent = 'Rasio cicilan mulai berat. Pertimbangkan menunda pinjaman baru dan fokus melunasi cicilan yang ada.';
+    } else {
+      ratioBar.className = 'bar-fill bg-alert';
+      ratioVerdict.textContent = 'Berisiko';
+      ratioVerdict.className = 'font-serif text-lg font-semibold text-alert-light';
+      ratioNote.textContent = 'Rasio cicilan Anda cukup tinggi. Pertimbangkan restrukturisasi atau konsultasi dengan kader pendamping.';
+    }
+  }
+  pendapatanInput.addEventListener('input', updateRatio);
+  cicilanInput.addEventListener('input', updateRatio);
+</script>
+</body>
+</html>

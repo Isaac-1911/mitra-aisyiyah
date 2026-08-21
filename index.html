@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitra Aisyiyah — Digital Kadarkum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F5F1E7',
+          'cream-2': '#EFEADB',
+          navy: {
+            DEFAULT: '#1C3A61',
+            dark: '#122C4C',
+            deep: '#0E223C',
+          },
+          rust: {
+            DEFAULT: '#BE5F2E',
+            dark: '#A24F24',
+            light: '#D97C46',
+          },
+          ink: '#201C16',
+          stone: '#6E6659',
+          line: '#DCD5C3',
+        },
+        fontFamily: {
+          serif: ['Lora', 'Georgia', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F5F1E7; }
+  .tracking-widest2 { letter-spacing: 0.14em; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; letter-spacing:0.14em; text-transform:uppercase; font-size:0.75rem; }
+  .nav-link { white-space:nowrap; }
+  .stat-grid > div { border-color:#DCD5C3; }
+  .fade-up { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .fade-up.in { opacity:1; transform:translateY(0); }
+  .rope-line { background-image: repeating-linear-gradient(to bottom, #C9C1AC 0, #C9C1AC 4px, transparent 4px, transparent 10px); width:1px; }
+  ::selection { background:#BE5F2E; color:#fff; }
+  .btn-focus:focus-visible { outline:3px solid #1C3A61; outline-offset:2px; }
+  details > summary { list-style:none; }
+  details > summary::-webkit-details-marker { display:none; }
+  .accordion-icon { transition: transform .3s ease; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+  .ring-card { transition: transform .4s ease, box-shadow .4s ease; }
+  .ring-card:hover { transform: translateY(-4px); }
+</style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+<!-- ================= NAVBAR ================= -->
+<header class="sticky top-0 z-50 bg-navy-dark text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between gap-4 py-4">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <span class="w-10 h-10 flex items-center justify-center bg-rust text-white font-mono font-bold text-sm">MA</span>
+        <span class="leading-tight">
+          <span class="block font-serif font-semibold text-lg tracking-wide">MITRA AISYIYAH</span>
+          <span class="block eyebrow text-cream/60 text-[10px]">Digital Kadarkum</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden xl:flex items-center gap-6 font-mono text-[12.5px] tracking-widest2 uppercase">
+        <a href="#beranda" class="nav-link border-b-2 border-rust text-rust pb-1">Beranda</a>
+        <a href="belajar.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Belajar</a>
+        <a href="cek-putuskan.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Cek &amp; Putuskan</a>
+        <a href="jika-terjerat.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Jika Terjerat</a>
+        <a href="pendampingan.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Pendampingan</a>
+        <a href="mandiri.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Mandiri</a>
+        <a href="mitra.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Mitra</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="hidden xl:block shrink-0">
+        <a href="jika-terjerat.html" class="btn-focus inline-flex items-center gap-2 bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-5 py-3">
+          <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          Butuh Bantuan
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menuBtn" class="xl:hidden btn-focus p-2" aria-label="Buka menu" aria-expanded="false">
+        <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobileMenu" class="hidden xl:hidden border-t border-white/10 bg-navy-dark">
+    <nav class="flex flex-col px-6 py-4 gap-1 font-mono text-sm tracking-widest2 uppercase">
+      <a href="#beranda" class="py-3 text-rust border-b border-white/10">Beranda</a>
+      <a href="belajar.html" class="py-3 text-cream/80 border-b border-white/10">Belajar</a>
+      <a href="cek-putuskan.html" class="py-3 text-cream/80 border-b border-white/10">Cek &amp; Putuskan</a>
+      <a href="jika-terjerat.html" class="py-3 text-cream/80 border-b border-white/10">Jika Terjerat</a>
+      <a href="pendampingan.html" class="py-3 text-cream/80 border-b border-white/10">Pendampingan</a>
+      <a href="mandiri.html" class="py-3 text-cream/80 border-b border-white/10">Mandiri</a>
+      <a href="mitra.html" class="py-3 text-cream/80 border-b border-white/10">Mitra</a>
+      <a href="jika-terjerat.html" class="mt-3 bg-rust text-white text-center py-3">Butuh Bantuan</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="beranda" class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24 grid lg:grid-cols-2 gap-14 items-start">
+    <div>
+      <p class="eyebrow text-rust mb-5">Platform Kadarkum Digital — Pinjaman Online</p>
+      <h1 class="font-serif text-[2.6rem] leading-[1.08] sm:text-6xl sm:leading-[1.06] font-semibold text-ink">
+        Pahami sebelum<br>meminjam.
+      </h1>
+      <h1 class="font-serif text-[2.6rem] leading-[1.08] sm:text-6xl sm:leading-[1.06] font-semibold text-navy mt-1">
+        Ketahui langkah saat<br>menghadapi masalah.
+      </h1>
+      <p class="font-serif italic text-3xl sm:text-4xl text-stone mt-4 leading-tight">
+        Bangun kemandirian<br>ekonomi.
+      </p>
+
+      <p class="mt-8 text-[15px] leading-relaxed text-ink/80 max-w-lg">
+        Mitra Aisyiyah adalah platform edukasi dan pendampingan digital untuk masyarakat — terutama perempuan — yang menghadapi risiko pinjaman online. Dari pencegahan, pengambilan keputusan, hingga pemulihan dan kemandirian.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="belajar.html" class="btn-focus bg-navy hover:bg-navy-dark transition text-cream font-mono text-xs tracking-widest2 uppercase px-6 py-4">Mulai Belajar</a>
+        <a href="jika-terjerat.html" class="btn-focus bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-6 py-4">Cari Bantuan</a>
+        <a href="cek-putuskan.html" class="btn-focus border border-navy text-navy hover:bg-navy hover:text-cream transition font-mono text-xs tracking-widest2 uppercase px-6 py-4">Cek Legalitas</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="aspect-[16/10] overflow-hidden bg-navy">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop"
+             alt="Kelompok pendampingan Aisyiyah berdiskusi bersama"
+             class="w-full h-full object-cover grayscale">
+      </div>
+      <div class="stat-grid grid grid-cols-2 border border-t-0 border-line divide-x divide-line">
+        <div class="grid grid-rows-2 divide-y divide-line">
+          <div class="p-6">
+            <p class="font-serif text-3xl text-navy font-semibold">103 Juta</p>
+            <p class="text-[13px] text-stone mt-1">Pengguna pinjol aktif di Indonesia</p>
+          </div>
+          <div class="p-6">
+            <p class="font-serif text-3xl text-navy font-semibold">98</p>
+            <p class="text-[13px] text-stone mt-1">Pinjol ilegal ditutup OJK (2023)</p>
+          </div>
+        </div>
+        <div class="grid grid-rows-2 divide-y divide-line">
+          <div class="p-6">
+            <p class="font-serif text-3xl text-navy font-semibold">4.500+</p>
+            <p class="text-[13px] text-stone mt-1">Laporan masalah pinjol per bulan ke OJK</p>
+          </div>
+          <div class="p-6">
+            <p class="font-serif text-3xl text-navy font-semibold">70%</p>
+            <p class="text-[13px] text-stone mt-1">Korban adalah perempuan dan ibu rumah tangga</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BAB 01 — APA YANG ANDA BUTUHKAN ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+    <div class="fade-up flex items-end justify-between flex-wrap gap-4 mb-12">
+      <div>
+        <p class="eyebrow text-rust mb-3">Bab 01</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink">Apa yang Anda butuhkan?</h2>
+      </div>
+      <p class="text-sm text-stone max-w-xs">Pilih situasi yang paling sesuai dengan kondisi Anda saat ini — kami arahkan ke halaman yang tepat.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-line">
+      <a href="belajar.html" class="fade-up ring-card group border-r border-b border-line p-8 flex flex-col justify-between min-h-[220px] hover:bg-navy hover:text-cream">
+        <span class="font-mono text-xs text-rust group-hover:text-rust-light">01</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Baru mempertimbangkan pinjaman</h3>
+          <p class="text-[13px] text-stone group-hover:text-cream/70 leading-relaxed">Pelajari dasar-dasar sebelum mengambil keputusan finansial.</p>
+        </div>
+      </a>
+      <a href="cek-putuskan.html" class="fade-up ring-card group border-r border-b border-line p-8 flex flex-col justify-between min-h-[220px] hover:bg-navy hover:text-cream">
+        <span class="font-mono text-xs text-rust group-hover:text-rust-light">02</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Sedang mempertimbangkan tawaran</h3>
+          <p class="text-[13px] text-stone group-hover:text-cream/70 leading-relaxed">Cek legalitas platform sebelum menyetujui pinjaman apa pun.</p>
+        </div>
+      </a>
+      <a href="jika-terjerat.html" class="fade-up ring-card group border-r border-b border-line p-8 flex flex-col justify-between min-h-[220px] hover:bg-navy hover:text-cream">
+        <span class="font-mono text-xs text-rust group-hover:text-rust-light">03</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Sudah terjerat pinjol ilegal</h3>
+          <p class="text-[13px] text-stone group-hover:text-cream/70 leading-relaxed">Langkah darurat menghadapi teror penagihan dan ancaman.</p>
+        </div>
+      </a>
+      <a href="pendampingan.html" class="fade-up ring-card group border-r border-b border-line p-8 flex flex-col justify-between min-h-[220px] hover:bg-navy hover:text-cream">
+        <span class="font-mono text-xs text-rust group-hover:text-rust-light">04</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Ingin membantu orang lain</h3>
+          <p class="text-[13px] text-stone group-hover:text-cream/70 leading-relaxed">Jadi kader pendamping bagi anggota Aisyiyah di sekitar Anda.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BAB 02 — BERPIKIR SEBELUM MENGAMBIL KEPUTUSAN FINANSIAL ================= -->
+<section class="bg-navy-deep text-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+    <div class="fade-up mb-14 max-w-2xl">
+      <p class="eyebrow text-rust-light mb-3">Bab 02</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Berpikir sebelum mengambil keputusan finansial</h2>
+      <p class="text-cream/60 text-[15px] mt-4 leading-relaxed">Empat pertanyaan sederhana ini bisa mencegah masalah besar di kemudian hari. Tanyakan pada diri sendiri sebelum menandatangani apa pun.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-px bg-white/10">
+      <div class="fade-up bg-navy-deep p-8 md:p-10">
+        <span class="font-mono text-rust-light text-sm">Q1</span>
+        <h3 class="font-serif text-xl font-semibold mt-4 mb-2">Kebutuhan atau keinginan?</h3>
+        <p class="text-cream/60 text-[14px] leading-relaxed">Apakah pinjaman ini untuk hal mendesak, atau bisa ditunda sampai kondisi keuangan lebih stabil?</p>
+      </div>
+      <div class="fade-up bg-navy-deep p-8 md:p-10">
+        <span class="font-mono text-rust-light text-sm">Q2</span>
+        <h3 class="font-serif text-xl font-semibold mt-4 mb-2">Terdaftar dan diawasi OJK?</h3>
+        <p class="text-cream/60 text-[14px] leading-relaxed">Pastikan penyedia pinjaman resmi. Pinjol ilegal tidak punya izin dan tidak tunduk pada aturan bunga.</p>
+      </div>
+      <div class="fade-up bg-navy-deep p-8 md:p-10">
+        <span class="font-mono text-rust-light text-sm">Q3</span>
+        <h3 class="font-serif text-xl font-semibold mt-4 mb-2">Mampu membayar tanpa mengorbankan kebutuhan pokok?</h3>
+        <p class="text-cream/60 text-[14px] leading-relaxed">Hitung cicilan terhadap penghasilan bulanan — jangan sampai mengganggu makan, sekolah anak, atau kebutuhan lain.</p>
+      </div>
+      <div class="fade-up bg-navy-deep p-8 md:p-10">
+        <span class="font-mono text-rust-light text-sm">Q4</span>
+        <h3 class="font-serif text-xl font-semibold mt-4 mb-2">Paham bunga dan dendanya?</h3>
+        <p class="text-cream/60 text-[14px] leading-relaxed">Baca total biaya, bukan hanya cicilan per bulan. Denda keterlambatan sering jadi jebakan utama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BAB 03 — KERANGKA RESILIENSI TERPADU ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+    <div class="fade-up mb-14 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Bab 03</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink">Kerangka resiliensi terpadu</h2>
+      <p class="text-stone text-[15px] mt-4 leading-relaxed">Empat lapisan perlindungan yang saling menguatkan — dari mencegah masalah muncul, hingga membangun kemandirian ekonomi jangka panjang.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-4 gap-6">
+      <div class="fade-up border border-line bg-white/40 p-7">
+        <div class="w-11 h-11 rounded-full border-2 border-navy flex items-center justify-center font-serif text-navy font-semibold">1</div>
+        <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Preventif</h3>
+        <p class="text-[13px] text-stone leading-relaxed">Edukasi literasi keuangan dan pengenalan risiko pinjol sebelum masalah terjadi.</p>
+      </div>
+      <div class="fade-up border border-line bg-white/40 p-7">
+        <div class="w-11 h-11 rounded-full border-2 border-navy flex items-center justify-center font-serif text-navy font-semibold">2</div>
+        <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Deteksi Dini</h3>
+        <p class="text-[13px] text-stone leading-relaxed">Alat cek legalitas dan tanda-tanda peringatan sebelum menyetujui pinjaman.</p>
+      </div>
+      <div class="fade-up border border-line bg-white/40 p-7">
+        <div class="w-11 h-11 rounded-full border-2 border-navy flex items-center justify-center font-serif text-navy font-semibold">3</div>
+        <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Pendampingan</h3>
+        <p class="text-[13px] text-stone leading-relaxed">Kader Aisyiyah dan konselor mendampingi korban lepas dari jerat pinjol ilegal.</p>
+      </div>
+      <div class="fade-up border border-line bg-navy text-cream p-7">
+        <div class="w-11 h-11 rounded-full border-2 border-rust-light flex items-center justify-center font-serif font-semibold">4</div>
+        <h3 class="font-serif text-lg font-semibold mt-6 mb-2">Kemandirian</h3>
+        <p class="text-[13px] text-cream/70 leading-relaxed">Pemulihan ekonomi berkelanjutan melalui pelatihan usaha dan akses keuangan sehat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BAB 04 — PERJALANAN PENGGUNA ================= -->
+<section class="bg-cream-2 border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+    <div class="fade-up mb-16 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Bab 04</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink">Perjalanan pengguna</h2>
+      <p class="text-stone text-[15px] mt-4 leading-relaxed">Setiap orang berada di titik yang berbeda. Begini alur pendampingan Mitra Aisyiyah dari awal hingga mandiri.</p>
+    </div>
+
+    <div class="relative">
+      <div class="hidden md:block absolute top-[22px] left-0 right-0 h-px bg-line"></div>
+      <div class="grid md:grid-cols-5 gap-10 md:gap-4">
+        <div class="fade-up relative">
+          <div class="w-11 h-11 rounded-full bg-navy text-cream flex items-center justify-center font-mono text-sm relative z-10">1</div>
+          <h3 class="font-serif font-semibold mt-5 mb-1">Sadar Risiko</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Mengenali bahaya pinjol ilegal melalui materi Belajar.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-11 h-11 rounded-full bg-navy text-cream flex items-center justify-center font-mono text-sm relative z-10">2</div>
+          <h3 class="font-serif font-semibold mt-5 mb-1">Cek Legalitas</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Memverifikasi status platform sebelum meminjam.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-11 h-11 rounded-full bg-navy text-cream flex items-center justify-center font-mono text-sm relative z-10">3</div>
+          <h3 class="font-serif font-semibold mt-5 mb-1">Ambil Keputusan</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Memutuskan dengan kepala dingin, bukan tekanan mendesak.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-11 h-11 rounded-full bg-rust text-white flex items-center justify-center font-mono text-sm relative z-10">4</div>
+          <h3 class="font-serif font-semibold mt-5 mb-1">Dapat Pendampingan</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Jika sudah terjerat, kader Aisyiyah mendampingi proses keluar.</p>
+        </div>
+        <div class="fade-up relative">
+          <div class="w-11 h-11 rounded-full bg-rust text-white flex items-center justify-center font-mono text-sm relative z-10">5</div>
+          <h3 class="font-serif font-semibold mt-5 mb-1">Mandiri Ekonomi</h3>
+          <p class="text-[13px] text-stone leading-relaxed">Membangun ulang kestabilan finansial jangka panjang.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PENDAMPINGAN + FAQ ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-2 gap-16">
+    <div class="fade-up">
+      <p class="eyebrow text-rust mb-3">Pendampingan</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink mb-5">Tidak perlu menghadapinya sendirian</h2>
+      <p class="text-stone text-[15px] leading-relaxed mb-8 max-w-md">Kader Aisyiyah yang terlatih siap mendampingi Anda menyusun langkah keluar dari jerat pinjol — mulai dari negosiasi, pelaporan, hingga pemulihan ekonomi. Layanan ini bersifat rahasia dan tanpa biaya.</p>
+      <a href="pendampingan.html" class="btn-focus inline-flex items-center gap-2 bg-navy hover:bg-navy-dark transition text-cream font-mono text-xs tracking-widest2 uppercase px-6 py-4">
+        Cari Pendampingan
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="fade-up">
+      <p class="eyebrow text-stone mb-5">Pertanyaan yang sering muncul</p>
+      <div class="border-t border-line">
+        <details class="group border-b border-line py-5" open>
+          <summary class="flex items-center justify-between cursor-pointer gap-4">
+            <span class="font-serif text-[17px] font-medium text-ink">Apakah layanan ini gratis?</span>
+            <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+          </summary>
+          <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Ya. Semua materi edukasi dan pendampingan di Mitra Aisyiyah tidak dipungut biaya sama sekali.</p>
+        </details>
+        <details class="group border-b border-line py-5">
+          <summary class="flex items-center justify-between cursor-pointer gap-4">
+            <span class="font-serif text-[17px] font-medium text-ink">Apakah data saya aman dan rahasia?</span>
+            <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+          </summary>
+          <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Setiap cerita dan data pribadi yang dibagikan ke kader pendamping dijaga kerahasiaannya dan hanya digunakan untuk proses pendampingan.</p>
+        </details>
+        <details class="group border-b border-line py-5">
+          <summary class="flex items-center justify-between cursor-pointer gap-4">
+            <span class="font-serif text-[17px] font-medium text-ink">Bagaimana cara melapor pinjol ilegal?</span>
+            <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+          </summary>
+          <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Anda bisa melapor melalui halaman Jika Terjerat, atau langsung ke kontak OJK dan kepolisian yang tercantum di sana.</p>
+        </details>
+        <details class="group border-b border-line py-5">
+          <summary class="flex items-center justify-between cursor-pointer gap-4">
+            <span class="font-serif text-[17px] font-medium text-ink">Apakah ini resmi bekerja sama dengan OJK?</span>
+            <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+          </summary>
+          <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Mitra Aisyiyah adalah platform edukasi dan pendampingan komunitas, merujuk pada data dan daftar resmi yang dipublikasikan OJK.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy-deep text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-9 h-9 flex items-center justify-center bg-rust text-white font-mono font-bold text-xs">MA</span>
+          <span class="font-serif font-semibold">Mitra Aisyiyah</span>
+        </div>
+        <p class="text-cream/50 text-[13px] leading-relaxed max-w-xs">Platform edukasi dan pendampingan digital seputar pinjaman online, untuk mendukung kemandirian ekonomi perempuan.</p>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Halaman</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li><a href="#beranda" class="hover:text-rust-light transition">Beranda</a></li>
+          <li><a href="belajar.html" class="hover:text-rust-light transition">Belajar</a></li>
+          <li><a href="cek-putuskan.html" class="hover:text-rust-light transition">Cek &amp; Putuskan</a></li>
+          <li><a href="jika-terjerat.html" class="hover:text-rust-light transition">Jika Terjerat</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Lainnya</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li><a href="pendampingan.html" class="hover:text-rust-light transition">Pendampingan</a></li>
+          <li><a href="mandiri.html" class="hover:text-rust-light transition">Mandiri</a></li>
+          <li><a href="mitra.html" class="hover:text-rust-light transition">Mitra</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Kontak Darurat</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li>Layanan OJK: 157</li>
+          <li>WhatsApp OJK: 081-157-157-157</li>
+          <li>hello@mitraaisyiyah.id</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap gap-3 justify-between text-[12px] text-cream/40">
+      <p>© 2026 Mitra Aisyiyah — Digital Kadarkum. Platform edukasi, bukan penyedia pinjaman.</p>
+      <p>Riset kolaborasi akademik.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  // Close only one FAQ accordion open at a time
+  document.querySelectorAll('details').forEach((el) => {
+    el.addEventListener('toggle', () => {
+      if (el.open) {
+        document.querySelectorAll('details').forEach((other) => {
+          if (other !== el) other.open = false;
+        });
+      }
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>

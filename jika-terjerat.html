@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jika Terjerat — Mitra Aisyiyah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F5F1E7',
+          'cream-2': '#EFEADB',
+          navy: { DEFAULT: '#1C3A61', dark: '#122C4C', deep: '#0E223C' },
+          rust: { DEFAULT: '#BE5F2E', dark: '#A24F24', light: '#D97C46' },
+          ink: '#201C16',
+          stone: '#6E6659',
+          line: '#DCD5C3',
+        },
+        fontFamily: {
+          serif: ['Lora', 'Georgia', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F5F1E7; }
+  .tracking-widest2 { letter-spacing: 0.14em; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; letter-spacing:0.14em; text-transform:uppercase; font-size:0.75rem; }
+  .nav-link { white-space:nowrap; }
+  ::selection { background:#BE5F2E; color:#fff; }
+  .btn-focus:focus-visible { outline:3px solid #1C3A61; outline-offset:2px; }
+  .fade-up { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .fade-up.in { opacity:1; transform:translateY(0); }
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  .accordion-icon { transition: transform .3s ease; }
+  details[open] .accordion-icon { transform: rotate(45deg); }
+</style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+<!-- ================= NAVBAR ================= -->
+<header class="sticky top-0 z-50 bg-navy-dark text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between gap-4 py-4">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <span class="w-10 h-10 flex items-center justify-center bg-rust text-white font-mono font-bold text-sm">MA</span>
+        <span class="leading-tight">
+          <span class="block font-serif font-semibold text-lg tracking-wide">MITRA AISYIYAH</span>
+          <span class="block eyebrow text-cream/60 text-[10px]">Digital Kadarkum</span>
+        </span>
+      </a>
+      <nav class="hidden xl:flex items-center gap-6 font-mono text-[12.5px] tracking-widest2 uppercase">
+        <a href="index.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Beranda</a>
+        <a href="belajar.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Belajar</a>
+        <a href="cek-putuskan.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Cek &amp; Putuskan</a>
+        <a href="jika-terjerat.html" class="nav-link border-b-2 border-rust text-rust pb-1">Jika Terjerat</a>
+        <a href="pendampingan.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Pendampingan</a>
+        <a href="mandiri.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Mandiri</a>
+        <a href="mitra.html" class="nav-link border-b-2 border-transparent hover:border-cream/30 text-cream/80 hover:text-cream transition pb-1">Mitra</a>
+      </nav>
+      <div class="hidden xl:block shrink-0">
+        <a href="pendampingan.html" class="btn-focus inline-flex items-center gap-2 bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-5 py-3">
+          <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          Butuh Bantuan
+        </a>
+      </div>
+      <button id="menuBtn" class="xl:hidden btn-focus p-2" aria-label="Buka menu" aria-expanded="false">
+        <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden xl:hidden border-t border-white/10 bg-navy-dark">
+    <nav class="flex flex-col px-6 py-4 gap-1 font-mono text-sm tracking-widest2 uppercase">
+      <a href="index.html" class="py-3 text-cream/80 border-b border-white/10">Beranda</a>
+      <a href="belajar.html" class="py-3 text-cream/80 border-b border-white/10">Belajar</a>
+      <a href="cek-putuskan.html" class="py-3 text-cream/80 border-b border-white/10">Cek &amp; Putuskan</a>
+      <a href="jika-terjerat.html" class="py-3 text-rust border-b border-white/10">Jika Terjerat</a>
+      <a href="pendampingan.html" class="py-3 text-cream/80 border-b border-white/10">Pendampingan</a>
+      <a href="mandiri.html" class="py-3 text-cream/80 border-b border-white/10">Mandiri</a>
+      <a href="mitra.html" class="py-3 text-cream/80 border-b border-white/10">Mitra</a>
+      <a href="pendampingan.html" class="mt-3 bg-rust text-white text-center py-3">Butuh Bantuan</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="max-w-2xl">
+      <p class="eyebrow text-rust mb-5">Jika Terjerat</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink leading-[1.1]">
+        Anda tidak sendirian, dan ada langkah keluar dari sini.
+      </h1>
+      <p class="text-stone text-[15px] mt-6 leading-relaxed">
+        Jika Anda sedang menghadapi tagihan pinjol ilegal — ancaman, penyebaran data, atau teror penagihan — tarik napas dulu. Halaman ini berisi langkah konkret yang bisa Anda ambil sekarang, satu per satu.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANGKAH DARURAT ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up eyebrow text-stone mb-10">Langkah Darurat — Lakukan Berurutan</div>
+
+    <div class="space-y-px bg-line max-w-4xl">
+      <div class="fade-up bg-cream flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">01</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Tetap tenang, jangan transfer dana tambahan</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Penagih ilegal sering meminta "biaya pelunasan" atau "denda tambahan" mendadak untuk menghentikan teror. Ini adalah taktik intimidasi, bukan kewajiban hukum — jangan langsung membayar di bawah tekanan.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">02</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Kumpulkan dan simpan semua bukti</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Screenshot percakapan, riwayat transfer, nomor kontak penagih, dan tangkapan layar ancaman. Bukti ini penting untuk laporan resmi ke OJK maupun kepolisian.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">03</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Baru blokir kontak yang meneror</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Setelah bukti tersimpan aman, blokir nomor dan akun yang digunakan untuk mengancam agar teror tidak berlanjut ke Anda maupun kontak di ponsel Anda.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">04</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Laporkan ke saluran resmi</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Gunakan bukti yang sudah dikumpulkan untuk melapor ke OJK, Kominfo, atau kepolisian melalui kanal di bawah ini. Laporan Anda juga membantu mencegah korban lain.</p>
+        </div>
+      </div>
+      <div class="fade-up bg-cream flex flex-col sm:flex-row gap-6 p-7">
+        <span class="font-serif text-3xl text-rust font-semibold w-12 shrink-0">05</span>
+        <div>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-2">Hubungi pendamping Aisyiyah</h3>
+          <p class="text-[14px] text-stone leading-relaxed">Anda tidak perlu menyusun langkah selanjutnya sendirian. Kader pendamping bisa membantu menyusun rencana keluar, termasuk negosiasi dan pemulihan kondisi finansial.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SALURAN PELAPORAN ================= -->
+<section class="bg-navy-deep text-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-12 max-w-xl">
+      <p class="eyebrow text-rust-light mb-3">Kanal Resmi</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Ke mana harus melapor</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-white/10">
+      <div class="fade-up bg-navy-deep p-8">
+        <h3 class="font-serif text-lg font-semibold mb-2">OJK</h3>
+        <p class="text-[13px] text-cream/60 leading-relaxed mb-4">Untuk laporan pinjol ilegal dan pengaduan konsumen jasa keuangan.</p>
+        <p class="font-mono text-sm text-rust-light">Telp: 157</p>
+        <p class="font-mono text-sm text-rust-light">WA: 081-157-157-157</p>
+      </div>
+      <div class="fade-up bg-navy-deep p-8">
+        <h3 class="font-serif text-lg font-semibold mb-2">Kominfo</h3>
+        <p class="text-[13px] text-cream/60 leading-relaxed mb-4">Untuk pemblokiran aplikasi dan konten pinjol ilegal yang masih beredar.</p>
+        <p class="font-mono text-sm text-rust-light">aduankonten.id</p>
+      </div>
+      <div class="fade-up bg-navy-deep p-8">
+        <h3 class="font-serif text-lg font-semibold mb-2">Kepolisian</h3>
+        <p class="text-[13px] text-cream/60 leading-relaxed mb-4">Untuk kasus ancaman, pemerasan, atau penyebaran data pribadi.</p>
+        <p class="font-mono text-sm text-rust-light">patrolisiber.id</p>
+        <p class="font-mono text-sm text-rust-light">Telp: 110</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HAK ANDA SAAT DITAGIH ================= -->
+<section class="bg-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-10 max-w-xl">
+      <p class="eyebrow text-rust mb-3">Penting Diketahui</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink">Yang tidak boleh dilakukan penagih</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed">Sesuai aturan OJK, penagihan pinjaman — legal maupun ilegal — tetap tunduk pada batasan berikut. Jika dilanggar, ini bisa jadi bukti kuat untuk laporan Anda.</p>
+    </div>
+
+    <div class="border-t border-line">
+      <details class="group border-b border-line py-5" open>
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-serif text-[17px] font-medium text-ink">Menagih di luar jam 08.00–20.00 waktu setempat</span>
+          <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+        </summary>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Penagihan di luar jam ini melanggar ketentuan OJK dan bisa dilaporkan.</p>
+      </details>
+      <details class="group border-b border-line py-5">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-serif text-[17px] font-medium text-ink">Menghubungi kontak lain di luar peminjam</span>
+          <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+        </summary>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Menyebarkan informasi utang ke keluarga, rekan kerja, atau kontak lain tanpa izin adalah pelanggaran privasi data.</p>
+      </details>
+      <details class="group border-b border-line py-5">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-serif text-[17px] font-medium text-ink">Mengancam, mengintimidasi, atau mempermalukan</span>
+          <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+        </summary>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Ancaman kekerasan, pelecehan verbal, atau upaya mempermalukan di ruang publik/media sosial adalah tindakan pidana.</p>
+      </details>
+      <details class="group border-b border-line py-5">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-serif text-[17px] font-medium text-ink">Mengakses data pribadi di luar keperluan pinjaman</span>
+          <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+        </summary>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Akses ke seluruh galeri foto, kontak, dan lokasi tanpa keperluan jelas melanggar UU Perlindungan Data Pribadi.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA PENDAMPINGAN ================= -->
+<section class="bg-navy text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 flex flex-wrap items-center justify-between gap-6">
+    <div>
+      <p class="eyebrow text-rust-light mb-3">Langkah selanjutnya</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold max-w-lg">Susun rencana keluar bersama kader pendamping Aisyiyah — gratis dan rahasia.</h2>
+    </div>
+    <a href="pendampingan.html" class="btn-focus inline-flex items-center gap-2 bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-6 py-4 shrink-0">
+      Cari Pendampingan
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy-deep text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-9 h-9 flex items-center justify-center bg-rust text-white font-mono font-bold text-xs">MA</span>
+          <span class="font-serif font-semibold">Mitra Aisyiyah</span>
+        </div>
+        <p class="text-cream/50 text-[13px] leading-relaxed max-w-xs">Platform edukasi dan pendampingan digital seputar pinjaman online, untuk mendukung kemandirian ekonomi perempuan.</p>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Halaman</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li><a href="index.html" class="hover:text-rust-light transition">Beranda</a></li>
+          <li><a href="belajar.html" class="hover:text-rust-light transition">Belajar</a></li>
+          <li><a href="cek-putuskan.html" class="hover:text-rust-light transition">Cek &amp; Putuskan</a></li>
+          <li><a href="jika-terjerat.html" class="hover:text-rust-light transition">Jika Terjerat</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Lainnya</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li><a href="pendampingan.html" class="hover:text-rust-light transition">Pendampingan</a></li>
+          <li><a href="mandiri.html" class="hover:text-rust-light transition">Mandiri</a></li>
+          <li><a href="mitra.html" class="hover:text-rust-light transition">Mitra</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-4">Kontak Darurat</p>
+        <ul class="space-y-2 text-[14px] text-cream/70">
+          <li>Layanan OJK: 157</li>
+          <li>WhatsApp OJK: 081-157-157-157</li>
+          <li>hello@mitraaisyiyah.id</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-wrap gap-3 justify-between text-[12px] text-cream/40">
+      <p>© 2026 Mitra Aisyiyah — Digital Kadarkum. Platform edukasi, bukan penyedia pinjaman.</p>
+      <p>Riset kolaborasi akademik.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  document.querySelectorAll('details').forEach((el) => {
+    el.addEventListener('toggle', () => {
+      if (el.open) {
+        document.querySelectorAll('details').forEach((other) => {
+          if (other !== el) other.open = false;
+        });
+      }
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>
