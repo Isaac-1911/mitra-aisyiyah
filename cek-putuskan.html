@@ -6,7 +6,7 @@
 <title>Cek &amp; Putuskan — Mitra Aisyiyah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -21,6 +21,7 @@
           stone: '#6E6659',
           line: '#DCD5C3',
           leaf: { DEFAULT: '#3E6B4F', light: '#E9F1EA' },
+          amber: { DEFAULT: '#AD7B23', light: '#F6EFDE' },
           alert: { DEFAULT: '#A6392B', light: '#F6E9E6' },
         },
         fontFamily: {
@@ -43,7 +44,14 @@
   .fade-up { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
   .fade-up.in { opacity:1; transform:translateY(0); }
   input[type=checkbox] { accent-color: #1C3A61; }
+  input[type=number] {
+    background:#F5F1E7; border:1px solid #DCD5C3; padding:0.85rem 1rem; font-size:1.05rem; width:100%;
+    font-family:'JetBrains Mono',monospace;
+  }
+  input[type=number]:focus { outline:none; border-color:#1C3A61; }
   .result-box { transition: opacity .3s ease, transform .3s ease; }
+  .chip { white-space:nowrap; }
+  .tool-nav a { transition: background-color .2s ease, color .2s ease; }
 </style>
 </head>
 <body class="font-sans text-ink antialiased">
@@ -99,85 +107,248 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
     <p class="eyebrow text-rust mb-5">Cek &amp; Putuskan</p>
     <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink max-w-2xl leading-[1.1]">
-      Dua alat sederhana sebelum Anda menandatangani apa pun.
+      Lima pemeriksaan sebelum Anda menandatangani apa pun.
     </h1>
     <p class="text-stone text-[15px] mt-6 max-w-xl leading-relaxed">
-      Cek status legalitas platform, lalu jalankan checklist keputusan finansial. Dua langkah ini bisa mencegah Anda terjebak pinjol ilegal.
+      OJK menyebut layanan pinjaman online sebagai LPBBTI dan mengimbau masyarakat menggunakan penyelenggara yang berizin, sesuai POJK No. 40 Tahun 2024 dan SEOJK No. 19/SEOJK.06/2025. Jalankan lima pemeriksaan berikut sebelum memutuskan meminjam.
     </p>
+    <div class="fade-up flex flex-wrap gap-2 mt-8">
+      <a href="#checklist-1" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">1 · Sebelum Memutuskan</a>
+      <a href="#checklist-2" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">2 · Cek Legalitas</a>
+      <a href="#checklist-3" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">3 · Tanda Pinjol Ilegal</a>
+      <a href="#checklist-4" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">4 · Keamanan Data</a>
+      <a href="#checklist-5" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">5 · Kemampuan Membayar</a>
+    </div>
   </div>
 </section>
 
-<!-- ================= CEK LEGALITAS ================= -->
-<section class="bg-cream border-b border-line">
+<!-- ================= LANDASAN ISLAMI — AYAT UTANG ================= -->
+<div class="bg-navy border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10">
+    <div class="fade-up max-w-3xl mx-auto text-center">
+      <p class="eyebrow text-rust-light mb-5 tracking-widest2">QS. Al-Baqarah: 282 &mdash; Ayat Al-Dain</p>
+      <p class="text-[1.5rem] sm:text-[1.8rem] text-cream/90 leading-[2.6]"
+         style="font-family:'Amiri',serif; direction:rtl; unicode-bidi:bidi-override;">
+        يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰ أَجَلٍ مُّسَمًّى فَكْتُبُوهُ...
+      </p>
+      <p class="font-serif italic text-[15px] text-cream/70 mt-5 leading-relaxed">
+        "Wahai orang-orang yang beriman! Apabila kamu melakukan transaksi utang piutang untuk waktu yang ditentukan, hendaklah kamu menuliskannya..."
+      </p>
+      <p class="text-[13px] text-cream/50 mt-3">Islam mewajibkan pencatatan, kejelasan batas waktu, dan tanggung jawab penuh dalam setiap transaksi utang — jalankan pemeriksaan berikut sebelum menyetujui apa pun.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CHECKLIST 1 — SEBELUM MEMUTUSKAN MEMINJAM ================= -->
+<section id="checklist-1" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
     <div class="grid lg:grid-cols-[280px_1fr] gap-10">
       <div class="fade-up">
-        <p class="eyebrow text-rust mb-3">Alat 01</p>
-        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Cek Legalitas Platform</h2>
-        <p class="text-stone text-[14px] mt-4 leading-relaxed">Masukkan nama platform pinjaman untuk memeriksa apakah namanya cocok dengan contoh data di bawah.</p>
+        <p class="eyebrow text-rust-light mb-3">Checklist 1</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Sebelum Memutuskan Meminjam</h2>
+        <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Jangan langsung membuka aplikasi pinjol. Jawab dulu 15 pertanyaan pemeriksaan berikut.</p>
       </div>
-
       <div class="fade-up">
-        <div class="border border-line bg-white/50 p-6 sm:p-8">
-          <label for="legalityInput" class="eyebrow text-stone block mb-3">Nama Platform</label>
+        <form id="checklist1Form" class="grid sm:grid-cols-2 gap-px bg-white/10">
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Uang tersebut benar-benar untuk kebutuhan penting</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Kebutuhan tersebut tidak dapat ditunda</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya sudah memiliki sumber penghasilan yang jelas</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Penghasilan saya cukup untuk membayar angsuran</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya tidak mempunyai pinjaman/utang lain yang memberatkan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya sudah menghitung seluruh kewajiban pembayaran</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya mempunyai dana untuk kebutuhan pokok keluarga</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Pinjaman digunakan untuk kebutuhan produktif/mendesak</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya sudah mengetahui jumlah uang yang benar-benar diterima</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya sudah mengetahui total yang harus dikembalikan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya sudah memahami tenor/jangka waktu pinjaman</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya sudah memahami biaya, bunga/margin, dan denda</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Penyelenggara tersebut berizin OJK</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya memahami isi perjanjian elektronik</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Saya siap membayar tepat waktu tanpa mengambil pinjaman baru</span></label>
+        </form>
+        <div id="checklist1Result" class="mt-6 border border-white/15 p-5 bg-navy/40">
+          <div class="flex items-center justify-between mb-2">
+            <p class="eyebrow text-cream/40">Hasil</p>
+            <p id="checklist1Count" class="font-mono text-sm text-cream/60">0 / 15 </p>
+          </div>
+          <p id="checklist1Text" class="font-serif text-lg">Centang pernyataan di atas untuk melihat hasilnya.</p>
+        </div>
+        <p class="text-[12px] text-cream/40 mt-4 italic">Prinsip: tidak semua kebutuhan harus diselesaikan dengan pinjaman.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHECKLIST 2 — CEK LEGALITAS PINJOL ================= -->
+<section id="checklist-2" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+      <div class="fade-up">
+        <p class="eyebrow text-rust mb-3">Checklist 2</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Cek Legalitas Pinjol</h2>
+        <p class="text-stone text-[14px] mt-4 leading-relaxed">Sebelum memasukkan NIK, nomor telepon, foto identitas, atau rekening bank, pastikan legalitas penyelenggara. Untuk pengecekan status, masyarakat dapat menghubungi <span class="text-ink font-medium">Kontak OJK 157</span>.</p>
+      </div>
+      <div class="fade-up">
+        <!-- Pencarian nama cepat (ilustratif) -->
+        <div class="border border-line bg-white/50 p-6 sm:p-7 mb-6">
+          <label for="legalityInput" class="eyebrow text-stone block mb-3">Pencarian Cepat — Nama Platform</label>
           <div class="flex flex-col sm:flex-row gap-3">
             <input id="legalityInput" type="text" placeholder="Contoh: Kredit Pintar, Duit Cepat..."
                    class="flex-1 border border-line bg-cream px-4 py-3.5 text-[15px] focus:outline-none focus:border-navy transition">
-            <button id="legalityBtn" class="btn-focus bg-navy hover:bg-navy-dark transition text-cream font-mono text-xs tracking-widest2 uppercase px-6 py-3.5 shrink-0">
-              Periksa
-            </button>
+            <button id="legalityBtn" class="btn-focus bg-navy hover:bg-navy-dark transition text-cream font-mono text-xs tracking-widest2 uppercase px-6 py-3.5 shrink-0">Periksa</button>
           </div>
+          <div id="legalityResult" class="result-box hidden mt-5 p-5 border"></div>
+          <p class="text-[12px] text-stone mt-4 leading-relaxed">Data pada alat ini adalah <span class="font-medium text-ink">contoh ilustrasi</span>, bukan data resmi real-time. Selalu verifikasi via Kontak OJK 157.</p>
+        </div>
 
-          <div id="legalityResult" class="result-box hidden mt-6 p-5 border"></div>
+        <!-- 12-item manual checklist -->
+        <p class="eyebrow text-stone mb-3">Pemeriksaan Manual — 12 Hal yang Harus Dicek</p>
+        <form id="checklist2Form" class="border-t border-l border-line grid sm:grid-cols-2">
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Nama perusahaan jelas</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Nama aplikasi sesuai nama perusahaan</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Status penyelenggara dapat diverifikasi via OJK</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Ada info berizin &amp; diawasi OJK</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Identitas perusahaan jelas</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Alamat/kontak perusahaan jelas</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Website/aplikasi resmi dapat diidentifikasi</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Informasi biaya pinjaman tersedia</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Informasi jangka waktu pinjaman tersedia</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Perjanjian dapat dibaca sebelum menyetujui</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Risiko pinjaman dijelaskan</span></label>
+          <label class="flex items-start gap-3 border-r border-b border-line bg-white/40 p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-ink">Mekanisme pengaduan tersedia</span></label>
+        </form>
+        <div id="checklist2Result" class="mt-4 p-4 border border-line bg-white/40">
+          <p id="checklist2Text" class="text-[14px] text-stone">0 dari 12 hal sudah diperiksa.</p>
+        </div>
+        <p class="text-[12px] text-stone mt-3 italic">Jika legalitas tidak dapat diverifikasi → jangan meminjam.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <p class="text-[12px] text-stone mt-5 leading-relaxed">
-            ⚠️ Data pada alat ini adalah <span class="font-medium text-ink">contoh ilustrasi</span> untuk keperluan riset, bukan data resmi real-time. Selalu verifikasi status terbaru langsung melalui
-            <a href="https://www.ojk.go.id" target="_blank" rel="noopener" class="text-rust underline hover:text-rust-dark">situs resmi OJK</a>
-            atau kontak layanan 157.
-          </p>
+<!-- ================= CHECKLIST 3 — TANDA PINJOL ILEGAL ================= -->
+<section id="checklist-3" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+      <div class="fade-up">
+        <p class="eyebrow text-rust-light mb-3">Checklist 3</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Kenali Tanda-Tanda Pinjol Ilegal</h2>
+        <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Centang tanda bahaya yang Anda temui. Satgas PASTI secara berkala memblokir entitas pinjol ilegal.</p>
+      </div>
+      <div class="fade-up">
+        <form id="checklist3Form" class="grid sm:grid-cols-2 gap-px bg-white/10">
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Menawarkan pinjaman via SMS/WhatsApp tiba-tiba</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Tidak dapat diverifikasi status izinnya</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Nama aplikasi mirip perusahaan resmi</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Meminta akses data yang tidak relevan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Meminta OTP/PIN/password</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Perjanjian tidak jelas</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Biaya pinjaman tidak transparan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Menjanjikan pencairan sangat cepat tanpa pemeriksaan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Memaksa calon peminjam segera mengambil pinjaman</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Menggunakan ancaman dalam penawaran/penagihan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Identitas perusahaan tidak jelas</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Alamat kantor tidak dapat diverifikasi</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Meminta pembayaran ke rekening pribadi mencurigakan</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Meminta akses ke daftar kontak secara tidak wajar</span></label>
+          <label class="flex items-start gap-3 bg-navy-deep p-4 cursor-pointer"><input type="checkbox" class="mt-1 w-4 h-4 shrink-0"><span class="text-[13.5px] text-cream/85">Menggunakan nama/logo perusahaan lain untuk meyakinkan</span></label>
+        </form>
+        <div id="checklist3Result" class="mt-6 border border-white/15 p-5 bg-navy/40">
+          <p id="checklist3Text" class="font-serif text-lg">Belum ada tanda yang dicentang.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CHECKLIST KEPUTUSAN ================= -->
-<section class="bg-navy-deep text-cream">
+<!-- ================= CHECKLIST 4 — KEAMANAN DATA PRIBADI ================= -->
+<section id="checklist-4" class="bg-cream border-b border-line scroll-mt-24">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
     <div class="grid lg:grid-cols-[280px_1fr] gap-10">
       <div class="fade-up">
-        <p class="eyebrow text-rust-light mb-3">Alat 02</p>
-        <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Checklist Keputusan Finansial</h2>
-        <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Centang pernyataan yang sesuai dengan kondisi Anda. Semakin banyak dicentang, semakin siap Anda mengambil pinjaman dengan aman.</p>
+        <p class="eyebrow text-rust mb-3">Checklist 4</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Keamanan Data Pribadi</h2>
+        <p class="text-stone text-[14px] mt-4 leading-relaxed">Sebelum memberikan data, tanyakan: \u201cData ini diperlukan untuk apa dan apakah benar-benar diperlukan?\u201d SEOJK 19/2025 membatasi akses aplikasi hanya pada kamera, lokasi, dan mikrofon sesuai ketentuan.</p>
       </div>
-
       <div class="fade-up">
-        <form id="checklistForm" class="space-y-px bg-white/10">
-          <label class="flex items-start gap-4 bg-navy-deep p-4 cursor-pointer">
-            <input type="checkbox" class="mt-1 w-4 h-4 shrink-0" data-weight="1">
-            <span class="text-[14px] text-cream/85">Pinjaman ini untuk kebutuhan mendesak, bukan keinginan yang bisa ditunda.</span>
-          </label>
-          <label class="flex items-start gap-4 bg-navy-deep p-4 cursor-pointer">
-            <input type="checkbox" class="mt-1 w-4 h-4 shrink-0" data-weight="1">
-            <span class="text-[14px] text-cream/85">Saya sudah memeriksa dan memastikan platform ini terdaftar di OJK.</span>
-          </label>
-          <label class="flex items-start gap-4 bg-navy-deep p-4 cursor-pointer">
-            <input type="checkbox" class="mt-1 w-4 h-4 shrink-0" data-weight="1">
-            <span class="text-[14px] text-cream/85">Saya sudah menghitung cicilan dan yakin tidak mengganggu kebutuhan pokok bulanan.</span>
-          </label>
-          <label class="flex items-start gap-4 bg-navy-deep p-4 cursor-pointer">
-            <input type="checkbox" class="mt-1 w-4 h-4 shrink-0" data-weight="1">
-            <span class="text-[14px] text-cream/85">Saya sudah membaca dan memahami total bunga, biaya admin, serta denda keterlambatan.</span>
-          </label>
-          <label class="flex items-start gap-4 bg-navy-deep p-4 cursor-pointer">
-            <input type="checkbox" class="mt-1 w-4 h-4 shrink-0" data-weight="1">
-            <span class="text-[14px] text-cream/85">Saya sudah mempertimbangkan alternatif lain (koperasi, keluarga, dana darurat) sebelum memilih pinjol.</span>
-          </label>
-        </form>
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-[13px] border-collapse">
+            <thead><tr class="bg-navy text-cream"><th class="p-3 text-left">Data</th><th class="p-3 text-left">Tingkat Kewaspadaan</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">NIK</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Foto KTP</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Foto selfie</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Nomor rekening</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Nomor telepon</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Alamat rumah</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Data pekerjaan</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Data keluarga</td><td class="p-3 text-stone">Waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Daftar kontak</td><td class="p-3 text-rust font-medium">Sangat waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Foto pribadi</td><td class="p-3 text-rust font-medium">Sangat waspada</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">Password</td><td class="p-3 text-alert font-semibold">Rahasia — jangan pernah berikan</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">PIN</td><td class="p-3 text-alert font-semibold">Rahasia — jangan pernah berikan</td></tr>
+              <tr class="border-b border-line odd:bg-white/40"><td class="p-3">OTP</td><td class="p-3 text-alert font-semibold">Rahasia — jangan pernah berikan</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-navy text-cream p-6">
+          <p class="eyebrow text-cream/50 mb-3">Rumus Sederhana Keamanan Data</p>
+          <p class="text-[14px] leading-loose">SIAPA yang meminta? → UNTUK APA data digunakan? → APAKAH benar-benar diperlukan? → BAGAIMANA data dilindungi? → BARU PUTUSKAN memberikan data.</p>
+          <p class="mt-4 pt-4 border-t border-white/15 text-rust-light font-medium text-[14px]">Jangan pernah memberikan OTP + PIN + Password kepada siapa pun, termasuk yang mengaku petugas perusahaan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div id="checklistResult" class="mt-6 border border-white/15 p-5 bg-navy/40">
-          <p class="eyebrow text-cream/40 mb-2">Hasil</p>
-          <p id="checklistText" class="font-serif text-lg">Centang pernyataan di atas untuk melihat rekomendasi.</p>
+<!-- ================= CHECKLIST 5 — HITUNG KEMAMPUAN MEMBAYAR ================= -->
+<section id="checklist-5" class="bg-navy-deep text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+      <div class="fade-up">
+        <p class="eyebrow text-rust-light mb-3">Checklist 5</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Hitung Kemampuan Membayar</h2>
+        <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Pendapatan − kebutuhan pokok − cicilan lama − kewajiban lain = sisa kemampuan keuangan. Bandingkan dengan angsuran pinjaman baru.</p>
+      </div>
+      <div class="fade-up">
+        <div class="bg-navy p-6 sm:p-8">
+          <div class="grid sm:grid-cols-2 gap-5 mb-3">
+            <div>
+              <label for="cPendapatan" class="eyebrow text-cream/50 block mb-2">Pendapatan Keluarga (Rp)</label>
+              <input id="cPendapatan" type="number" min="0" placeholder="5000000">
+            </div>
+            <div>
+              <label for="cKebutuhan" class="eyebrow text-cream/50 block mb-2">Kebutuhan Pokok (Rp)</label>
+              <input id="cKebutuhan" type="number" min="0" placeholder="3000000">
+            </div>
+            <div>
+              <label for="cCicilanLama" class="eyebrow text-cream/50 block mb-2">Cicilan Lama (Rp)</label>
+              <input id="cCicilanLama" type="number" min="0" placeholder="750000">
+            </div>
+            <div>
+              <label for="cKewajibanLain" class="eyebrow text-cream/50 block mb-2">Kewajiban Lain (Rp)</label>
+              <input id="cKewajibanLain" type="number" min="0" placeholder="500000">
+            </div>
+          </div>
+          <div class="mb-5">
+            <label for="cCicilanBaru" class="eyebrow text-cream/50 block mb-2">Angsuran Pinjaman Baru (Rp)</label>
+            <input id="cCicilanBaru" type="number" min="0" placeholder="1000000">
+          </div>
+
+          <div class="flex items-center justify-between border-t border-white/15 pt-5 mb-3">
+            <span class="font-mono text-sm text-cream/60">Sisa kemampuan keuangan</span>
+            <span id="cSisa" class="font-serif text-xl font-semibold">Rp0</span>
+          </div>
+          <div class="flex items-center justify-between mb-5">
+            <span id="cVerdict" class="font-serif text-lg font-semibold">—</span>
+          </div>
+          <p id="cNote" class="text-[13px] text-cream/60 leading-relaxed">Isi seluruh kolom untuk melihat hasil perhitungan.</p>
+        </div>
+
+        <div class="mt-6 bg-navy/50 border border-white/10 p-5">
+          <p class="eyebrow text-rust-light mb-2">Kasus — Pinjol Mencurigakan</p>
+          <p class="text-[13px] text-cream/70 leading-relaxed italic">\u201cSELAMAT! Anda mendapat pinjaman Rp20 juta. Cair dalam 5 menit. Klik link sekarang dan kirim foto KTP serta selfie.\u201d — Ani belum pernah mendaftar.</p>
+          <p class="text-[13px] text-cream mt-3 font-medium">Jawaban: JANGAN KLIK LINK → JANGAN KIRIM DATA → JANGAN MEMBAYAR → VERIFIKASI LEGALITAS → SIMPAN BUKTI.</p>
         </div>
       </div>
     </div>
@@ -265,13 +436,12 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
   revealEls.forEach((el) => observer.observe(el));
 
-  // ---- Cek Legalitas (contoh data ilustrasi) ----
+  // ---- Pencarian cepat legalitas (contoh data ilustrasi) ----
   const legalSample = ['kredit pintar', 'akulaku', 'kredivo', 'easycash', 'dana rupiah', 'julo', 'pinjam modal'];
   const illegalSample = ['duit cepat', 'kredit instan 24jam', 'pinjam kilat tanpa syarat', 'uang darurat sekarang'];
-
   const legalityBtn = document.getElementById('legalityBtn');
   const legalityInput = document.getElementById('legalityInput');
   const legalityResult = document.getElementById('legalityResult');
@@ -280,50 +450,128 @@
     const query = legalityInput.value.trim().toLowerCase();
     legalityResult.classList.remove('hidden');
     if (!query) {
-      legalityResult.className = 'result-box mt-6 p-5 border border-line bg-white/40';
+      legalityResult.className = 'result-box mt-5 p-5 border border-line bg-white/40';
       legalityResult.innerHTML = '<p class="text-[14px] text-stone">Masukkan nama platform terlebih dahulu.</p>';
       return;
     }
     const isLegal = legalSample.some((n) => query.includes(n));
     const isIllegal = illegalSample.some((n) => query.includes(n));
-
     if (isLegal) {
-      legalityResult.className = 'result-box mt-6 p-5 border border-leaf bg-leaf-light';
-      legalityResult.innerHTML = '<p class="font-serif text-lg text-leaf font-semibold mb-1">✓ Cocok dengan contoh platform terdaftar</p><p class="text-[13px] text-ink/70">Tetap verifikasi ulang status terkini di situs resmi OJK sebelum melanjutkan.</p>';
+      legalityResult.className = 'result-box mt-5 p-5 border border-leaf bg-leaf-light';
+      legalityResult.innerHTML = '<p class="font-serif text-lg text-leaf font-semibold mb-1">✓ Cocok dengan contoh platform terdaftar</p><p class="text-[13px] text-ink/70">Tetap verifikasi ulang status terkini melalui Kontak OJK 157.</p>';
     } else if (isIllegal) {
-      legalityResult.className = 'result-box mt-6 p-5 border border-alert bg-alert-light';
+      legalityResult.className = 'result-box mt-5 p-5 border border-alert bg-alert-light';
       legalityResult.innerHTML = '<p class="font-serif text-lg text-alert font-semibold mb-1">✕ Cocok dengan pola nama pinjol ilegal</p><p class="text-[13px] text-ink/70">Hindari mengisi data pribadi apa pun. Laporkan melalui halaman Jika Terjerat.</p>';
     } else {
-      legalityResult.className = 'result-box mt-6 p-5 border border-line bg-white/40';
-      legalityResult.innerHTML = '<p class="font-serif text-lg text-ink font-semibold mb-1">Tidak ditemukan dalam contoh data</p><p class="text-[13px] text-stone">Ini bukan berarti aman atau ilegal — cek langsung ke daftar resmi OJK untuk kepastian.</p>';
+      legalityResult.className = 'result-box mt-5 p-5 border border-line bg-white/40';
+      legalityResult.innerHTML = '<p class="font-serif text-lg text-ink font-semibold mb-1">Tidak ditemukan dalam contoh data</p><p class="text-[13px] text-stone">Cek langsung ke Kontak OJK 157 untuk kepastian.</p>';
     }
   }
   legalityBtn.addEventListener('click', checkLegality);
   legalityInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') checkLegality(); });
 
-  // ---- Checklist Keputusan ----
-  const checklistForm = document.getElementById('checklistForm');
-  const checklistText = document.getElementById('checklistText');
-  const checkboxes = checklistForm.querySelectorAll('input[type=checkbox]');
-
-  function updateChecklist() {
-    const total = checkboxes.length;
-    const checked = Array.from(checkboxes).filter((c) => c.checked).length;
-    if (checked === 0) {
-      checklistText.textContent = 'Centang pernyataan di atas untuk melihat rekomendasi.';
-      return;
-    }
-    if (checked === total) {
-      checklistText.textContent = 'Anda sudah mempertimbangkan semua aspek penting. Keputusan ini terlihat cukup matang — tetap ambil waktu sejenak sebelum menandatangani.';
-    } else if (checked >= total - 1) {
-      checklistText.textContent = 'Hampir lengkap. Coba tinjau ulang satu poin yang belum tercentang sebelum melanjutkan.';
-    } else if (checked >= Math.ceil(total / 2)) {
-      checklistText.textContent = 'Beberapa pertimbangan penting masih terlewat. Sebaiknya jangan terburu-buru mengambil keputusan.';
+  // ---- Checklist 1: Sebelum Memutuskan Meminjam (15 item, tiered) ----
+  const c1 = document.getElementById('checklist1Form');
+  const c1Text = document.getElementById('checklist1Text');
+  const c1Count = document.getElementById('checklist1Count');
+  const c1Boxes = c1.querySelectorAll('input[type=checkbox]');
+  function updateC1() {
+    const checked = Array.from(c1Boxes).filter((b) => b.checked).length;
+    c1Count.textContent = checked + ' / 15 ';
+    if (checked >= 13) {
+      c1Text.textContent = 'Keputusan relatif lebih siap — tetap periksa kembali legalitas dan perjanjian.';
+    } else if (checked >= 9) {
+      c1Text.textContent = 'Pertimbangkan kembali dan lakukan pemeriksaan lebih lanjut sebelum melanjutkan.';
+    } else if (checked > 0) {
+      c1Text.textContent = 'Sebaiknya jangan meminjam terlebih dahulu — masih banyak yang perlu dipastikan.';
     } else {
-      checklistText.textContent = 'Masih banyak hal yang perlu dipertimbangkan. Sebaiknya tunda dulu keputusan ini dan pelajari kembali materi di halaman Belajar.';
+      c1Text.textContent = 'Centang pernyataan di atas untuk melihat hasilnya.';
     }
   }
-  checkboxes.forEach((c) => c.addEventListener('change', updateChecklist));
+  c1Boxes.forEach((b) => b.addEventListener('change', updateC1));
+
+  // ---- Checklist 2: Cek Legalitas Pinjol (12 item) ----
+  const c2 = document.getElementById('checklist2Form');
+  const c2Text = document.getElementById('checklist2Text');
+  const c2Boxes = c2.querySelectorAll('input[type=checkbox]');
+  function updateC2() {
+    const checked = Array.from(c2Boxes).filter((b) => b.checked).length;
+    if (checked === 12) {
+      c2Text.textContent = '12 dari 12 hal sudah diperiksa — legalitas cukup meyakinkan, tetap verifikasi akhir ke OJK 157.';
+    } else if (checked >= 8) {
+      c2Text.textContent = checked + ' dari 12 hal sudah diperiksa — hampir lengkap, lanjutkan sisanya sebelum memutuskan.';
+    } else {
+      c2Text.textContent = checked + ' dari 12 hal sudah diperiksa — jika legalitas tidak dapat diverifikasi, jangan meminjam.';
+    }
+  }
+  c2Boxes.forEach((b) => b.addEventListener('change', updateC2));
+
+  // ---- Checklist 3: Tanda Pinjol Ilegal (15 item, warning jika banyak) ----
+  const c3 = document.getElementById('checklist3Form');
+  const c3Text = document.getElementById('checklist3Text');
+  const c3Boxes = c3.querySelectorAll('input[type=checkbox]');
+  function updateC3() {
+    const checked = Array.from(c3Boxes).filter((b) => b.checked).length;
+    if (checked === 0) {
+      c3Text.textContent = 'Belum ada tanda yang dicentang.';
+    } else if (checked <= 2) {
+      c3Text.textContent = checked + ' tanda ditemukan — tetap waspada dan lanjutkan pemeriksaan legalitas.';
+    } else {
+      c3Text.textContent = checked + ' tanda ditemukan — STOP. JANGAN KLIK. JANGAN DAFTAR. JANGAN KIRIM DATA. VERIFIKASI KE OJK.';
+    }
+  }
+  c3Boxes.forEach((b) => b.addEventListener('change', updateC3));
+
+  // ---- Checklist 5: Hitung Kemampuan Membayar ----
+  const cPendapatan = document.getElementById('cPendapatan');
+  const cKebutuhan = document.getElementById('cKebutuhan');
+  const cCicilanLama = document.getElementById('cCicilanLama');
+  const cKewajibanLain = document.getElementById('cKewajibanLain');
+  const cCicilanBaru = document.getElementById('cCicilanBaru');
+  const cSisa = document.getElementById('cSisa');
+  const cVerdict = document.getElementById('cVerdict');
+  const cNote = document.getElementById('cNote');
+
+  function formatRp(n) {
+    return 'Rp' + Math.round(n).toLocaleString('id-ID');
+  }
+
+  function updateCalc() {
+    const pendapatan = parseFloat(cPendapatan.value) || 0;
+    const kebutuhan = parseFloat(cKebutuhan.value) || 0;
+    const cicilanLama = parseFloat(cCicilanLama.value) || 0;
+    const kewajibanLain = parseFloat(cKewajibanLain.value) || 0;
+    const cicilanBaru = parseFloat(cCicilanBaru.value) || 0;
+
+    if (pendapatan === 0 && kebutuhan === 0 && cicilanBaru === 0) {
+      cSisa.textContent = 'Rp0';
+      cVerdict.textContent = '—';
+      cVerdict.className = 'font-serif text-lg font-semibold';
+      cNote.textContent = 'Isi seluruh kolom untuk melihat hasil perhitungan.';
+      return;
+    }
+
+    const sisa = pendapatan - kebutuhan - cicilanLama - kewajibanLain;
+    cSisa.textContent = formatRp(sisa);
+
+    if (cicilanBaru <= 0) {
+      cVerdict.textContent = 'Masukkan angsuran baru';
+      cVerdict.className = 'font-serif text-lg font-semibold text-cream/50';
+      cNote.textContent = 'Isi kolom angsuran pinjaman baru untuk mendapat kesimpulan aman/tidak aman.';
+      return;
+    }
+
+    if (sisa >= cicilanBaru) {
+      cVerdict.textContent = 'Aman/Mampu';
+      cVerdict.className = 'font-serif text-lg font-semibold text-leaf-light';
+      cNote.textContent = 'Sisa kemampuan keuangan masih mencukupi untuk angsuran baru. Tetap pertimbangkan dana darurat.';
+    } else {
+      cVerdict.textContent = 'Tidak Sehat/Tidak Mampu';
+      cVerdict.className = 'font-serif text-lg font-semibold text-rust-light';
+      cNote.textContent = 'Angsuran baru melebihi ruang keuangan yang tersedia — berpotensi menimbulkan defisit. Pertimbangkan menunda pinjaman.';
+    }
+  }
+  [cPendapatan, cKebutuhan, cCicilanLama, cKewajibanLain, cCicilanBaru].forEach((el) => el.addEventListener('input', updateCalc));
 </script>
 </body>
 </html>

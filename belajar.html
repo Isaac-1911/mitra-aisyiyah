@@ -6,7 +6,7 @@
 <title>Belajar — Mitra Aisyiyah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -20,6 +20,8 @@
           ink: '#201C16',
           stone: '#6E6659',
           line: '#DCD5C3',
+          leaf: { DEFAULT: '#3E6B4F', light: '#E9F1EA' },
+          alert: { DEFAULT: '#A6392B', light: '#F6E9E6' },
         },
         fontFamily: {
           serif: ['Lora', 'Georgia', 'serif'],
@@ -44,8 +46,18 @@
   details[open] .accordion-icon { transform: rotate(45deg); }
   .fade-up { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
   .fade-up.in { opacity:1; transform:translateY(0); }
-  .module-card { transition: transform .35s ease, box-shadow .35s ease; }
-  .module-card:hover { transform: translateY(-3px); }
+  .chip { transition: background-color .2s ease, color .2s ease; white-space:nowrap; }
+  table.data-table { border-collapse:collapse; width:100%; }
+  table.data-table th, table.data-table td { padding:10px 12px; font-size:12.5px; text-align:left; vertical-align:top; }
+  table.data-table.light th { background:#1C3A61; color:#F5F1E7; }
+  table.data-table.light td { border-bottom:1px solid #DCD5C3; color:#201C16; }
+  table.data-table.light tr:nth-child(even) td { background:rgba(255,255,255,.5); }
+  table.data-table.dark th { background:#BE5F2E; color:#fff; }
+  table.data-table.dark td { border-bottom:1px solid rgba(255,255,255,.12); color:rgba(245,241,231,.85); }
+  table.data-table.dark tr:nth-child(even) td { background:rgba(255,255,255,.04); }
+  .flow-step { border:1px solid #DCD5C3; background:rgba(255,255,255,.5); }
+  .flow-step.dark { border-color:rgba(255,255,255,.15); background:rgba(255,255,255,.04); }
+  .flow-arrow { color:#BE5F2E; font-size:1.1rem; line-height:1; }
 </style>
 </head>
 <body class="font-sans text-ink antialiased">
@@ -104,32 +116,40 @@
       Literasi keuangan dimulai dari memahami apa yang Anda tanda tangani.
     </h1>
     <p class="text-stone text-[15px] mt-6 max-w-xl leading-relaxed">
-      Empat modul singkat ini menyiapkan Anda untuk mengenali risiko pinjaman online, memahami hak sebagai peminjam, dan membuat keputusan finansial yang lebih aman — sebelum masalah muncul, bukan sesudahnya.
+      16 modul berikut menyiapkan Anda untuk mengenali risiko pinjaman online dari berbagai sisi: hukum, digital, sosial-budaya, hingga ekonomi rumah tangga — sebelum masalah muncul, bukan sesudahnya.
     </p>
   </div>
 </section>
 
-<!-- ================= JALUR BELAJAR ================= -->
+<!-- ================= JALUR BELAJAR (3 KELOMPOK) ================= -->
 <section class="bg-cream border-b border-line">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-    <div class="fade-up eyebrow text-stone mb-8">Jalur Belajar — 4 Modul</div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 border-t border-l border-line">
-      <a href="#modul-1" class="module-card fade-up border-r border-b border-line p-7 flex flex-col justify-between min-h-[190px] bg-white/40 hover:bg-navy hover:text-cream group">
-        <span class="font-mono text-xs text-rust group-hover:text-rust-light">Modul 01 · 4 menit</span>
-        <h3 class="font-serif text-lg font-semibold mt-6">Mengenal Pinjaman Online</h3>
-      </a>
-      <a href="#modul-2" class="module-card fade-up border-r border-b border-line p-7 flex flex-col justify-between min-h-[190px] bg-white/40 hover:bg-navy hover:text-cream group">
-        <span class="font-mono text-xs text-rust group-hover:text-rust-light">Modul 02 · 5 menit</span>
-        <h3 class="font-serif text-lg font-semibold mt-6">Bunga, Denda, dan Biaya Tersembunyi</h3>
-      </a>
-      <a href="#modul-3" class="module-card fade-up border-r border-b border-line p-7 flex flex-col justify-between min-h-[190px] bg-white/40 hover:bg-navy hover:text-cream group">
-        <span class="font-mono text-xs text-rust group-hover:text-rust-light">Modul 03 · 4 menit</span>
-        <h3 class="font-serif text-lg font-semibold mt-6">Ciri-Ciri Pinjol Ilegal</h3>
-      </a>
-      <a href="#modul-4" class="module-card fade-up border-r border-b border-line p-7 flex flex-col justify-between min-h-[190px] bg-white/40 hover:bg-navy hover:text-cream group">
-        <span class="font-mono text-xs text-rust group-hover:text-rust-light">Modul 04 · 5 menit</span>
-        <h3 class="font-serif text-lg font-semibold mt-6">Hak dan Kewajiban Peminjam</h3>
-      </a>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14">
+    <div class="fade-up eyebrow text-stone mb-4">Kelompok A — Dasar-Dasar Pinjaman Online</div>
+    <div class="fade-up flex flex-wrap gap-2 mb-10">
+      <a href="#modul-1" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">01 · Mengenal Pinjaman Online</a>
+      <a href="#modul-2" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">02 · Bunga, Denda &amp; Biaya</a>
+      <a href="#modul-3" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">03 · Ciri Pinjol Ilegal</a>
+      <a href="#modul-4" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">04 · Hak &amp; Kewajiban Peminjam</a>
+      <a href="#modul-5" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">05 · Mekanisme Kerja Pinjol</a>
+      <a href="#modul-6" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">06 · Dasar Hukum</a>
+    </div>
+
+    <div class="fade-up eyebrow text-stone mb-4">Kelompok B — Strategi Preventif (Literasi Terpadu)</div>
+    <div class="fade-up flex flex-wrap gap-2 mb-10">
+      <a href="#modul-7" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">07 · Literasi Hukum</a>
+      <a href="#modul-8" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">08 · Literasi Digital</a>
+      <a href="#modul-9" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">09 · Pelindungan Data Pribadi</a>
+      <a href="#modul-10" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">10 · Pengendalian Konsumtif</a>
+      <a href="#modul-11" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">11 · Model Literasi Terpadu</a>
+    </div>
+
+    <div class="fade-up eyebrow text-stone mb-4">Kelompok C — Dimensi Sosial, Budaya &amp; Ekonomi</div>
+    <div class="fade-up flex flex-wrap gap-2">
+      <a href="#modul-12" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">12 · Dimensi Sosial</a>
+      <a href="#modul-13" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">13 · Keluarga &amp; Lingkungan</a>
+      <a href="#modul-14" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">14 · Dimensi Budaya</a>
+      <a href="#modul-15" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">15 · Ekonomi Rumah Tangga</a>
+      <a href="#modul-16" class="chip border border-line hover:bg-navy hover:text-cream hover:border-navy px-4 py-2 text-[13px]">16 · Meminjam atau Tidak?</a>
     </div>
   </div>
 </section>
@@ -142,9 +162,9 @@
       <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Mengenal Pinjaman Online</h2>
     </div>
     <div class="fade-up space-y-5 text-cream/70 text-[15px] leading-relaxed max-w-2xl">
-      <p>Pinjaman online (pinjol) adalah layanan pinjam-meminjam uang berbasis teknologi finansial (fintech peer-to-peer lending). Ada dua jenis: <span class="text-cream font-medium">legal</span>, yang terdaftar dan diawasi Otoritas Jasa Keuangan (OJK), dan <span class="text-cream font-medium">ilegal</span>, yang beroperasi tanpa izin dan sering melanggar hukum dalam praktik penagihannya.</p>
-      <p>Pinjol legal wajib mengikuti batas maksimum bunga, transparansi biaya, dan tata cara penagihan yang diatur OJK. Pinjol ilegal tidak terikat aturan ini — sehingga korban sering menghadapi bunga mencekik, penyebaran data pribadi, hingga ancaman dan pelecehan saat menagih.</p>
-      <p>Langkah pertama yang paling penting: <span class="text-cream font-medium">selalu cek status legalitas platform</span> sebelum mengisi data pribadi apa pun, termasuk sebelum mengunduh aplikasinya.</p>
+      <p>Pinjaman online (pinjol) adalah layanan pinjam-meminjam uang berbasis teknologi finansial. OJK menyebutnya <span class="text-cream font-medium">Layanan Pendanaan Bersama Berbasis Teknologi Informasi (LPBBTI)</span>. Ada dua jenis: <span class="text-cream font-medium">legal</span>, yang terdaftar dan diawasi Otoritas Jasa Keuangan (OJK), dan <span class="text-cream font-medium">ilegal</span>, yang beroperasi tanpa izin.</p>
+      <p>Pinjol legal wajib mengikuti batas maksimum bunga, transparansi biaya, dan tata cara penagihan yang diatur OJK. Pinjol ilegal tidak terikat aturan ini — sehingga korban sering menghadapi bunga mencekik, penyebaran data pribadi, hingga ancaman saat menagih.</p>
+      <p>Langkah pertama yang paling penting: <span class="text-cream font-medium">selalu cek status legalitas platform</span> sebelum mengisi data pribadi apa pun.</p>
     </div>
   </div>
 </section>
@@ -157,8 +177,8 @@
       <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Bunga, Denda, dan Biaya Tersembunyi</h2>
     </div>
     <div class="fade-up space-y-5 text-stone text-[15px] leading-relaxed max-w-2xl">
-      <p>OJK menetapkan batas maksimum bunga dan biaya pinjol legal sekitar 0,3% per hari dari nilai pokok pinjaman. Pinjol ilegal sering mengenakan bunga jauh di atas itu, kadang dihitung harian tanpa batas, sehingga total tagihan bisa berlipat ganda hanya dalam hitungan minggu.</p>
-      <p>Selalu hitung <span class="text-ink font-medium">total biaya</span>, bukan hanya angka cicilan bulanan. Perhatikan tiga komponen ini sebelum menyetujui pinjaman:</p>
+      <p>OJK menetapkan batas maksimum bunga dan biaya pinjol legal. Pinjol ilegal sering mengenakan bunga jauh di atas itu, sehingga total tagihan bisa berlipat ganda hanya dalam hitungan minggu.</p>
+      <p>Selalu hitung <span class="text-ink font-medium">total biaya</span>, bukan hanya angka cicilan bulanan:</p>
       <ul class="grid sm:grid-cols-3 gap-4 mt-2">
         <li class="border border-line bg-white/50 p-5">
           <p class="font-mono text-xs text-rust mb-2">01</p>
@@ -206,7 +226,12 @@
           <span class="text-rust-light mt-0.5">✕</span>
           <p class="text-[14px] text-cream/80">Mengancam menyebarkan data pribadi atau menghubungi seluruh kontak saat menagih.</p>
         </div>
+        <div class="bg-navy-deep flex items-start gap-4 p-4">
+          <span class="text-rust-light mt-0.5">✕</span>
+          <p class="text-[14px] text-cream/80">Menawarkan pinjaman tiba-tiba lewat SMS/WhatsApp tanpa Anda pernah mendaftar.</p>
+        </div>
       </div>
+      <p class="text-cream/50 text-[12px] mt-4">Lihat pemeriksaan lengkap di halaman <a href="cek-putuskan.html" class="text-rust-light underline">Cek &amp; Putuskan</a>.</p>
     </div>
   </div>
 </section>
@@ -220,7 +245,500 @@
     </div>
     <div class="fade-up space-y-5 text-stone text-[15px] leading-relaxed max-w-2xl">
       <p>Sebagai peminjam pada platform legal, Anda memiliki hak untuk mendapatkan informasi biaya secara transparan, ditagih sesuai jam wajar (08.00–20.00 waktu setempat), dan tidak diintimidasi atau dipermalukan di depan orang lain.</p>
-      <p>Di sisi lain, kewajiban Anda adalah membayar sesuai kesepakatan dan memberikan data yang benar saat pengajuan. Memahami kedua sisi ini membantu Anda bersikap tegas saat menghadapi penagihan yang tidak wajar — karena Anda tahu batas mana yang boleh dan tidak boleh dilanggar pihak pemberi pinjaman.</p>
+      <p>Di sisi lain, kewajiban Anda adalah membayar sesuai kesepakatan dan memberikan data yang benar saat pengajuan. Memahami kedua sisi ini membantu Anda bersikap tegas saat menghadapi penagihan yang tidak wajar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 05 — MEKANISME KERJA PINJOL ================= -->
+<section id="modul-5" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-[280px_1fr] gap-10">
+    <div class="fade-up">
+      <p class="eyebrow text-rust-light mb-3">Modul 05</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Mekanisme Kerja Pinjaman Online</h2>
+      <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Alur keputusan dari niat meminjam hingga pinjaman lunas — lengkap dengan titik-titik keputusan penting.</p>
+    </div>
+    <div class="fade-up max-w-2xl space-y-2">
+      <div class="flow-step dark p-4">1. Apakah benar-benar membutuhkan pinjaman? <span class="text-rust-light">→ jika tidak, selesai di sini</span></div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-4">2. Mencari penyelenggara resmi/legal (berizin OJK)</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-4">3. Memeriksa legalitas dan identitas penyedia</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-4">4. Membaca seluruh perjanjian <span class="text-rust-light">→ jika tidak paham, jangan setujui</span></div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-4">5. Memeriksa bunga, biaya, tenor &amp; denda — apakah mampu membayar? <span class="text-rust-light">→ jika tidak, jangan meminjam</span></div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-4">6. Pengajuan → 7. Verifikasi → 8. Pencairan</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-4">9. Pembayaran cicilan — lancar hingga lunas, <span class="text-rust-light">atau jika bermasalah:</span> komunikasi dengan penyelenggara → pengaduan resmi/penyelesaian sengketa</div>
+
+      <p class="eyebrow text-cream/40 mt-8 mb-3">Legal vs Ilegal — Perbandingan Cepat</p>
+      <div class="grid sm:grid-cols-2 gap-px bg-white/10">
+        <div class="bg-navy-deep p-5">
+          <p class="font-serif font-semibold text-leaf-light mb-2">LEGAL</p>
+          <ul class="text-[13px] text-cream/70 space-y-1 list-disc list-inside">
+            <li>Berizin OJK</li>
+            <li>Tunduk aturan OJK</li>
+            <li>Ada mekanisme pengaduan</li>
+          </ul>
+          <p class="text-[12px] text-leaf-light mt-3">→ Lebih aman</p>
+        </div>
+        <div class="bg-navy-deep p-5">
+          <p class="font-serif font-semibold text-rust-light mb-2">ILEGAL</p>
+          <ul class="text-[13px] text-cream/70 space-y-1 list-disc list-inside">
+            <li>Tidak berizin, risiko hukum tinggi</li>
+            <li>Potensi penyalahgunaan data</li>
+            <li>Penagihan bermasalah, biaya tidak transparan, modus penipuan</li>
+          </ul>
+          <p class="text-[12px] text-rust-light mt-3">→ Laporkan / hindari</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 06 — DASAR HUKUM ================= -->
+<section id="modul-6" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Modul 06</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Dasar Hukum Pinjaman Online</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed">Sebelas landasan hukum yang relevan bagi masyarakat dalam memahami posisi hukumnya terhadap pinjaman online.</p>
+    </div>
+    <div class="fade-up overflow-x-auto">
+      <table class="data-table light min-w-[720px]">
+        <thead><tr><th>No</th><th>Dasar Hukum</th><th>Pokok Pengaturan</th><th>Relevansi dengan Pinjol</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>UUD NRI Tahun 1945</td><td>Jaminan hak warga negara dan perlindungan hukum</td><td>Landasan konstitusional perlindungan masyarakat sebagai pengguna jasa keuangan</td></tr>
+          <tr><td>2</td><td>UU No. 8 Tahun 1999 tentang Perlindungan Konsumen</td><td>Hak dan kewajiban konsumen serta pelaku usaha</td><td>Melindungi peminjam sebagai konsumen jasa keuangan</td></tr>
+          <tr><td>3</td><td>UU No. 11/2008 tentang ITE, diubah dgn UU No. 1/2024</td><td>Informasi dan transaksi elektronik, dokumen elektronik, perbuatan yang dilarang</td><td>Relevan terhadap perjanjian elektronik, komunikasi digital, dan penyalahgunaan teknologi</td></tr>
+          <tr><td>4</td><td>UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP)</td><td>Hak subjek data, pemrosesan data pribadi, kewajiban pengendali/prosesor, sanksi</td><td>Dasar perlindungan data peminjam dari penyalahgunaan</td></tr>
+          <tr><td>5</td><td>UU No. 4 Tahun 2023 tentang P2SK</td><td>Penguatan landasan hukum sektor jasa keuangan, termasuk LPBBTI</td><td>Landasan hukum lebih kuat bagi penyelenggaraan fintech lending</td></tr>
+          <tr><td>6</td><td>POJK No. 40 Tahun 2024 tentang LPBBTI</td><td>Perizinan, penyelenggaraan usaha, pendanaan, manajemen risiko, perlindungan pengguna</td><td>Regulasi utama fintech lending saat ini; dasar membedakan penyelenggara resmi vs ilegal</td></tr>
+          <tr><td>7</td><td>SEOJK No. 19/SEOJK.06/2025 tentang LPBBTI</td><td>Ketentuan teknis penyelenggaraan LPBBTI</td><td>Pedoman teknis pelaksanaan POJK 40/2024</td></tr>
+          <tr><td>8</td><td>POJK No. 22 Tahun 2023 tentang Pelindungan Konsumen di Sektor Jasa Keuangan</td><td>Hak konsumen, informasi, pengaduan, pelindungan data, perilaku PUJK</td><td>Memperkuat perlindungan pengguna jasa keuangan</td></tr>
+          <tr><td>9</td><td>KUH Perdata</td><td>Hukum perjanjian, perikatan, wanprestasi</td><td>Dasar hubungan hukum antara pemberi dan penerima dana</td></tr>
+          <tr><td>10</td><td>UU No. 30 Tahun 1999 tentang Arbitrase dan APS</td><td>Penyelesaian sengketa di luar pengadilan</td><td>Mekanisme penyelesaian sengketa alternatif</td></tr>
+          <tr><td>11</td><td>POJK No. 8 Tahun 2026</td><td>Pelaporan data transaksi LPBBTI kepada OJK</td><td>Perlindungan penggunaan data transaksi &amp; aspek pelaporan</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANDASAN ISLAMI — MODUL 06 ADDON ================= -->
+<section class="bg-navy text-cream border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 lg:py-16">
+    <div class="fade-up mb-10">
+      <p class="eyebrow text-rust-light mb-3">Landasan Islami — Pelengkap Modul 06</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold">Dasar Al-Qur'an tentang Riba dan Utang</h2>
+      <p class="text-cream/60 text-[14px] mt-3 max-w-xl leading-relaxed">Selain landasan regulasi negara, Islam memberikan panduan yang sangat jelas tentang utang piutang dan larangan riba. Keduanya saling melengkapi sebagai dasar literasi hukum pinjaman online.</p>
+    </div>
+    <div class="fade-up grid md:grid-cols-3 gap-px bg-white/10">
+
+      <!-- 275 -->
+      <div class="bg-navy p-7">
+        <p class="eyebrow text-rust-light mb-4">QS. Al-Baqarah: 275</p>
+        <p class="text-right leading-[2.5] text-[1.3rem] text-cream/90 mb-4"
+           style="font-family:'Amiri',serif; direction:rtl;">
+          وَأَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا...
+        </p>
+        <p class="font-serif italic text-[13.5px] text-cream/70 leading-relaxed border-t border-white/10 pt-4">
+          "Allah telah menghalalkan jual beli dan mengharamkan riba..."
+        </p>
+      </div>
+
+      <!-- 276 -->
+      <div class="bg-navy p-7">
+        <p class="eyebrow text-rust-light mb-4">QS. Al-Baqarah: 276</p>
+        <p class="font-serif text-[1.15rem] text-cream/85 leading-relaxed mb-4 pt-2">
+          "Allah memusnahkan riba dan menyuburkan sedekah..."
+        </p>
+        <p class="text-[13px] text-cream/60 leading-relaxed border-t border-white/10 pt-4">Riba tidak mendatangkan keberkahan. Pinjol ilegal dengan bunga mencekik termasuk praktik yang merusak — bukan menumbuhkan — harta.</p>
+      </div>
+
+      <!-- 282 ringkas -->
+      <div class="bg-navy p-7">
+        <p class="eyebrow text-rust-light mb-4">QS. Al-Baqarah: 282</p>
+        <p class="text-right leading-[2.5] text-[1.1rem] text-cream/90 mb-4"
+           style="font-family:'Amiri',serif; direction:rtl;">
+          إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰ أَجَلٍ مُّسَمًّى فَكْتُبُوهُ...
+        </p>
+        <p class="font-serif italic text-[13.5px] text-cream/70 leading-relaxed border-t border-white/10 pt-4">
+          "Apabila kamu melakukan transaksi utang piutang untuk waktu yang ditentukan, hendaklah kamu menuliskannya..."
+        </p>
+        <p class="text-[12px] text-cream/50 mt-2">Prinsip ini mendasari pentingnya memahami perjanjian sebelum meminjam.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 07 — LITERASI HUKUM ================= -->
+<section id="modul-7" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust-light mb-3">Modul 07 — Strategi Preventif</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Literasi Hukum Pinjaman Online</h2>
+      <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Kemampuan mengetahui, memahami, dan menggunakan informasi hukum seputar legalitas penyelenggara, hak-kewajiban, isi perjanjian, biaya, penagihan, hingga penyelesaian sengketa.</p>
+    </div>
+    <div class="fade-up overflow-x-auto mb-6">
+      <table class="data-table dark min-w-[520px]">
+        <thead><tr><th>No</th><th>Yang Harus Dipahami</th><th>Pertanyaan yang Harus Diajukan</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Legalitas penyelenggara</td><td>Apakah penyelenggara resmi/berizin sesuai ketentuan OJK?</td></tr>
+          <tr><td>2</td><td>Identitas penyelenggara</td><td>Siapa badan hukum dan pihak yang bertanggung jawab?</td></tr>
+          <tr><td>3</td><td>Perjanjian</td><td>Apakah saya sudah membaca seluruh perjanjian?</td></tr>
+          <tr><td>4</td><td>Jumlah pinjaman</td><td>Berapa dana yang sebenarnya saya terima?</td></tr>
+          <tr><td>5</td><td>Biaya/manfaat ekonomi</td><td>Berapa total biaya yang harus saya bayar?</td></tr>
+          <tr><td>6</td><td>Tenor</td><td>Kapan pinjaman harus dilunasi?</td></tr>
+          <tr><td>7</td><td>Denda</td><td>Apa konsekuensi jika terlambat membayar?</td></tr>
+          <tr><td>8</td><td>Penagihan</td><td>Bagaimana mekanisme penagihan dilakukan?</td></tr>
+          <tr><td>9</td><td>Data pribadi</td><td>Data apa saja yang dikumpulkan dan untuk tujuan apa?</td></tr>
+          <tr><td>10</td><td>Pengaduan</td><td>Ke mana saya mengadu apabila terjadi masalah?</td></tr>
+          <tr><td>11</td><td>Sengketa</td><td>Apa jalur penyelesaian apabila terjadi perselisihan?</td></tr>
+          <tr><td>12</td><td>Bukti transaksi</td><td>Apakah saya menyimpan perjanjian dan bukti pembayaran?</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fade-up text-cream/80 text-[14px] italic border-l-2 border-rust-light pl-4 max-w-2xl">Jangan meminjam sebelum memahami siapa yang meminjamkan, berapa yang diterima, berapa total yang harus dikembalikan, kapan harus dibayar, dan apa akibat hukumnya.</p>
+  </div>
+</section>
+
+<!-- ================= MODUL 08 — LITERASI DIGITAL ================= -->
+<section id="modul-8" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Modul 08 — Strategi Preventif</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Literasi Digital</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed">Kemampuan menggunakan perangkat dan layanan digital secara kritis, aman, dan sadar risiko — karena proses pinjaman berlangsung lewat aplikasi, situs web, dan komunikasi digital.</p>
+    </div>
+    <div class="fade-up overflow-x-auto mb-8">
+      <table class="data-table light min-w-[480px]">
+        <thead><tr><th>No</th><th>Aspek</th><th>Perilaku Aman</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Aplikasi</td><td>Unduh dari sumber resmi</td></tr>
+          <tr><td>2</td><td>Identitas aplikasi</td><td>Periksa nama dan identitas penyelenggara</td></tr>
+          <tr><td>3</td><td>Tautan</td><td>Jangan sembarang membuka link pinjaman</td></tr>
+          <tr><td>4</td><td>Password</td><td>Gunakan password yang kuat dan berbeda</td></tr>
+          <tr><td>5</td><td>OTP</td><td>Jangan memberikan kode OTP kepada orang lain</td></tr>
+          <tr><td>6</td><td>PIN</td><td>Jangan membagikan PIN</td></tr>
+          <tr><td>7</td><td>Phishing</td><td>Waspadai pesan yang meminta data melalui link</td></tr>
+          <tr><td>8</td><td>Iklan</td><td>Jangan langsung percaya promosi \u201cpinjaman cepat\u201d</td></tr>
+          <tr><td>9</td><td>Perjanjian digital</td><td>Baca sebelum menekan tombol persetujuan</td></tr>
+          <tr><td>10</td><td>Bukti transaksi</td><td>Simpan screenshot/dokumen transaksi</td></tr>
+          <tr><td>11</td><td>Komunikasi</td><td>Simpan bukti percakapan jika terjadi masalah</td></tr>
+          <tr><td>12</td><td>Keamanan perangkat</td><td>Gunakan pengamanan layar dan pembaruan sistem</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fade-up eyebrow text-stone mb-3">Kesimpulan — Prinsip 5T Literasi Digital</p>
+    <div class="fade-up grid grid-cols-2 sm:grid-cols-5 gap-3">
+      <div class="border border-line bg-white/50 p-4 text-center"><p class="font-serif text-xl font-semibold text-rust">T</p><p class="text-[12px] text-stone mt-1">TELITI sebelum klik</p></div>
+      <div class="border border-line bg-white/50 p-4 text-center"><p class="font-serif text-xl font-semibold text-rust">T</p><p class="text-[12px] text-stone mt-1">TANYAKAN sebelum setuju</p></div>
+      <div class="border border-line bg-white/50 p-4 text-center"><p class="font-serif text-xl font-semibold text-rust">T</p><p class="text-[12px] text-stone mt-1">TUTUP akses tak perlu</p></div>
+      <div class="border border-line bg-white/50 p-4 text-center"><p class="font-serif text-xl font-semibold text-rust">T</p><p class="text-[12px] text-stone mt-1">TOLAK permintaan mencurigakan</p></div>
+      <div class="border border-line bg-white/50 p-4 text-center"><p class="font-serif text-xl font-semibold text-rust">S</p><p class="text-[12px] text-stone mt-1">SIMPAN bukti transaksi</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 09 — PELINDUNGAN DATA PRIBADI ================= -->
+<section id="modul-9" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust-light mb-3">Modul 09 — Strategi Preventif</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Literasi Pelindungan Data Pribadi</h2>
+      <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">UU No. 27 Tahun 2022 menempatkan pelindungan data pribadi sebagai bagian dari perlindungan hak pribadi, mengatur hak subjek data, pemrosesan, kewajiban pengendali/prosesor, serta sanksi.</p>
+    </div>
+    <div class="fade-up overflow-x-auto mb-8">
+      <table class="data-table dark min-w-[520px]">
+        <thead><tr><th>Data/Informasi</th><th>Risiko</th><th>Tindakan Perlindungan</th></tr></thead>
+        <tbody>
+          <tr><td>NIK</td><td>Pencurian identitas</td><td>Jangan diberikan kepada pihak tidak jelas</td></tr>
+          <tr><td>Nomor telepon</td><td>Spam/penipuan</td><td>Batasi penyebaran</td></tr>
+          <tr><td>Rekening bank</td><td>Penyalahgunaan transaksi</td><td>Pastikan tujuan pemberian jelas</td></tr>
+          <tr><td>Foto identitas</td><td>Penyalahgunaan identitas</td><td>Pastikan pihak penerima sah</td></tr>
+          <tr><td>Foto pribadi</td><td>Penyalahgunaan</td><td>Jangan diberikan tanpa kebutuhan jelas</td></tr>
+          <tr><td>Kontak</td><td>Gangguan terhadap pihak lain</td><td>Pahami tujuan penggunaan</td></tr>
+          <tr><td>Informasi pekerjaan</td><td>Profiling</td><td>Berikan sesuai kebutuhan</td></tr>
+          <tr><td>Data keuangan</td><td>Risiko finansial</td><td>Lindungi dan jangan sebarkan</td></tr>
+          <tr><td>Password</td><td>Pengambilalihan akun</td><td>Jangan pernah dibagikan</td></tr>
+          <tr><td>OTP</td><td>Transaksi tidak sah</td><td>Rahasiakan sepenuhnya</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fade-up max-w-md space-y-2 mb-6">
+      <div class="flow-step dark p-3 text-[13px]">Siapa yang meminta?</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-[13px]">Untuk apa data digunakan?</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-[13px]">Apakah memang diperlukan?</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-[13px]">Bagaimana data dilindungi?</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-[13px] border-rust-light">Baru berikan jika sah &amp; diperlukan</div>
+    </div>
+    <p class="fade-up text-cream/80 text-[14px] italic border-l-2 border-rust-light pl-4 max-w-2xl">Data pribadi bukan sekadar informasi biasa. Jangan memberikan data pribadi hanya karena diminta — pahami siapa yang meminta, tujuan pemrosesan, dan dasar penggunaannya.</p>
+  </div>
+</section>
+
+<!-- ================= MODUL 10 — PENGENDALIAN KONSUMTIF ================= -->
+<section id="modul-10" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Modul 10 — Strategi Preventif</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Pengendalian Perilaku Konsumtif</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed">Kemampuan mengendalikan keinginan membeli agar keputusan keuangan didasarkan pada kebutuhan, kemampuan membayar, dan prioritas — bukan keinginan sesaat.</p>
+    </div>
+    <div class="fade-up overflow-x-auto mb-8">
+      <table class="data-table light min-w-[560px]">
+        <thead><tr><th>Pertanyaan</th><th>Kebutuhan</th><th>Keinginan</th></tr></thead>
+        <tbody>
+          <tr><td>Apakah harus dibeli sekarang?</td><td>Ya</td><td>Tidak selalu</td></tr>
+          <tr><td>Apa akibat jika tidak membeli?</td><td>Ada dampak nyata</td><td>Umumnya hanya rasa tidak nyaman</td></tr>
+          <tr><td>Apakah menghasilkan manfaat produktif?</td><td>Sering kali</td><td>Belum tentu</td></tr>
+          <tr><td>Apakah tersedia dana sendiri?</td><td>Sebaiknya tersedia</td><td>Sering menggunakan utang</td></tr>
+          <tr><td>Apakah dapat ditunda?</td><td>Terbatas</td><td>Biasanya bisa</td></tr>
+          <tr><td>Perlu pinjaman?</td><td>Harus dipertimbangkan ketat</td><td>Sebaiknya dihindari</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fade-up eyebrow text-stone mb-3">Metode STOP Sebelum Meminjam</p>
+    <div class="fade-up grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="border border-line bg-white/50 p-4"><p class="font-serif text-xl font-semibold text-rust">S</p><p class="text-ink text-[13px] font-medium mt-1">STOP</p><p class="text-[12px] text-stone">Berhenti, jangan langsung mengajukan</p></div>
+      <div class="border border-line bg-white/50 p-4"><p class="font-serif text-xl font-semibold text-rust">T</p><p class="text-ink text-[13px] font-medium mt-1">TELITI</p><p class="text-[12px] text-stone">Hitung kebutuhan dan kemampuan bayar</p></div>
+      <div class="border border-line bg-white/50 p-4"><p class="font-serif text-xl font-semibold text-rust">O</p><p class="text-ink text-[13px] font-medium mt-1">OBSERVASI</p><p class="text-[12px] text-stone">Periksa legalitas &amp; seluruh biaya</p></div>
+      <div class="border border-line bg-white/50 p-4"><p class="font-serif text-xl font-semibold text-rust">P</p><p class="text-ink text-[13px] font-medium mt-1">PUTUSKAN</p><p class="text-[12px] text-stone">Pinjam hanya jika perlu &amp; mampu bayar</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 11 — MODEL LITERASI TERPADU ================= -->
+<section id="modul-11" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-[280px_1fr] gap-10">
+    <div class="fade-up">
+      <p class="eyebrow text-rust-light mb-3">Modul 11 — Strategi Preventif</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Model Literasi Terpadu</h2>
+      <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Rangkaian pertimbangan sebelum mengambil pinjaman, menggabungkan literasi hukum, digital, data pribadi, dan kontrol konsumsi.</p>
+    </div>
+    <div class="fade-up max-w-md space-y-2">
+      <div class="flow-step dark p-3 text-center font-serif font-semibold">Mau Meminjam?</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-center">Literasi Hukum — Legalitas &amp; perjanjian</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-center">Literasi Digital — Aplikasi, akun, keamanan digital</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-center">Data Pribadi — Apa yang diminta &amp; bagaimana digunakan</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-center">Kontrol Konsumsi — Kebutuhan atau keinginan?</div>
+      <div class="flow-arrow text-center">↓</div>
+      <div class="flow-step dark p-3 text-center font-medium">Kemampuan Bayar?</div>
+      <div class="grid grid-cols-2 gap-3 mt-2">
+        <div class="flow-step dark p-3 text-center text-rust-light text-sm">TIDAK → Jangan Pinjam</div>
+        <div class="flow-step dark p-3 text-center text-leaf-light text-sm">YA → Pinjam Secara Bijak</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 12 — DIMENSI SOSIAL ================= -->
+<section id="modul-12" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Modul 12 — Dimensi Sosial, Budaya &amp; Ekonomi</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Dimensi Sosial</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed">Keputusan meminjam sering dipengaruhi hubungan dengan keluarga, teman, tetangga, komunitas, dan lingkungan pergaulan — bukan semata kebutuhan objektif.</p>
+    </div>
+    <div class="fade-up overflow-x-auto">
+      <table class="data-table light min-w-[680px]">
+        <thead><tr><th>Faktor Sosial</th><th>Bentuk Pengaruh</th><th>Risiko terhadap Keputusan</th><th>Sikap yang Dianjurkan</th></tr></thead>
+        <tbody>
+          <tr><td>Teman</td><td>Ajakan menggunakan aplikasi pinjol</td><td>Mengikuti tanpa mempertimbangkan kemampuan</td><td>Jangan mengikuti keputusan orang lain</td></tr>
+          <tr><td>Tetangga</td><td>Membandingkan kondisi ekonomi</td><td>Muncul rasa malu/gengsi</td><td>Fokus pada kemampuan sendiri</td></tr>
+          <tr><td>Rekan kerja</td><td>Gaya hidup kelompok</td><td>Mengikuti pola konsumsi kelompok</td><td>Tentukan prioritas pribadi</td></tr>
+          <tr><td>Komunitas</td><td>Tekanan untuk berpartisipasi</td><td>Meminjam untuk memenuhi kegiatan</td><td>Sesuaikan dengan kemampuan</td></tr>
+          <tr><td>Media sosial</td><td>Menampilkan gaya hidup</td><td>FOMO dan konsumsi impulsif</td><td>Bersikap kritis terhadap konten</td></tr>
+          <tr><td>Lingkungan keluarga</td><td>Permintaan bantuan keuangan</td><td>Meminjam tanpa perhitungan</td><td>Diskusikan kemampuan keluarga</td></tr>
+          <tr><td>Pasangan</td><td>Keputusan finansial bersama</td><td>Konflik akibat utang tersembunyi</td><td>Transparansi keuangan</td></tr>
+          <tr><td>Lingkungan kerja</td><td>Kebutuhan tampil sesuai status</td><td>Konsumsi berlebihan</td><td>Bedakan kebutuhan dan gengsi</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fade-up text-stone text-[14px] italic border-l-2 border-rust pl-4 mt-6 max-w-2xl">Jangan menjadikan standar kehidupan orang lain sebagai ukuran kemampuan keuangan keluarga sendiri.</p>
+  </div>
+</section>
+
+<!-- ================= MODUL 13 — KELUARGA & LINGKUNGAN ================= -->
+<section id="modul-13" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust-light mb-3">Modul 13 — Dimensi Sosial, Budaya &amp; Ekonomi</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Pengaruh Keluarga dan Lingkungan</h2>
+      <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Keluarga adalah lingkungan pertama yang membentuk kebiasaan mengelola uang. Keputusan meminjam berdampak bukan hanya pada peminjam, tetapi seluruh anggota keluarga.</p>
+    </div>
+    <div class="fade-up overflow-x-auto">
+      <table class="data-table dark min-w-[640px]">
+        <thead><tr><th>Kondisi Keluarga</th><th>Potensi Keputusan</th><th>Risiko</th><th>Solusi</th></tr></thead>
+        <tbody>
+          <tr><td>Pendapatan stabil</td><td>Pinjaman mungkin dipertimbangkan</td><td>Beban cicilan tambahan</td><td>Hitung kemampuan membayar</td></tr>
+          <tr><td>Pendapatan tidak stabil</td><td>Cenderung mencari dana cepat</td><td>Risiko gagal bayar</td><td>Prioritaskan kebutuhan pokok</td></tr>
+          <tr><td>Banyak tanggungan</td><td>Kebutuhan tinggi</td><td>Ruang keuangan sempit</td><td>Buat prioritas kebutuhan</td></tr>
+          <tr><td>Ada utang sebelumnya</td><td>Mengambil pinjaman baru</td><td>Risiko lingkaran utang</td><td>Evaluasi seluruh utang</td></tr>
+          <tr><td>Konflik keuangan</td><td>Meminjam secara diam-diam</td><td>Masalah keluarga</td><td>Bangun komunikasi terbuka</td></tr>
+          <tr><td>Tekanan sosial keluarga besar</td><td>Meminjam untuk membantu</td><td>Beban ekonomi pribadi</td><td>Tentukan batas kemampuan</td></tr>
+          <tr><td>Pengeluaran pendidikan/kesehatan</td><td>Pinjaman dianggap solusi cepat</td><td>Cicilan jangka panjang</td><td>Bandingkan alternatif pembiayaan</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fade-up text-cream/80 text-[14px] italic border-l-2 border-rust-light pl-4 mt-6 max-w-2xl">Utang pribadi dapat menjadi persoalan keluarga ketika kemampuan membayarnya menggunakan sumber daya ekonomi rumah tangga. Keputusan meminjam sebaiknya mempertimbangkan kepentingan keluarga secara keseluruhan.</p>
+  </div>
+</section>
+
+<!-- ================= MODUL 14 — DIMENSI BUDAYA ================= -->
+<section id="modul-14" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Modul 14 — Dimensi Sosial, Budaya &amp; Ekonomi</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Dimensi Budaya</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed"><span class="text-ink font-medium">Budaya konsumtif</span> adalah kecenderungan membeli lebih didorong keinginan, gengsi, tren, atau simbol status daripada kebutuhan yang benar-benar penting.</p>
+    </div>
+    <div class="fade-up overflow-x-auto mb-8">
+      <table class="data-table light min-w-[560px]">
+        <thead><tr><th>Perilaku</th><th>Contoh</th><th>Potensi Masalah</th></tr></thead>
+        <tbody>
+          <tr><td>Gengsi</td><td>Membeli barang mahal agar dianggap berhasil</td><td>Utang untuk mempertahankan citra</td></tr>
+          <tr><td>FOMO</td><td>Takut tertinggal tren</td><td>Pembelian impulsif</td></tr>
+          <tr><td>Belanja online</td><td>Promo dan flash sale</td><td>Membeli barang yang tidak diperlukan</td></tr>
+          <tr><td>Lifestyle</td><td>Mengikuti gaya hidup teman</td><td>Pengeluaran melebihi pendapatan</td></tr>
+          <tr><td>Media sosial</td><td>Membandingkan kehidupan</td><td>Tekanan untuk tampil \u201csempurna\u201d</td></tr>
+          <tr><td>Konsumsi simbol status</td><td>Barang bermerek</td><td>Utang konsumtif</td></tr>
+          <tr><td>Tradisi sosial</td><td>Acara keluarga/komunitas</td><td>Pengeluaran melebihi kemampuan</td></tr>
+          <tr><td>Kemudahan paylater/pinjol</td><td>\u201cBeli sekarang, bayar kemudian\u201d</td><td>Mengurangi kesadaran terhadap beban utang</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fade-up eyebrow text-stone mb-3">Siklus Budaya Konsumtif</p>
+    <div class="fade-up max-w-sm space-y-1">
+      <div class="flow-step p-2.5 text-center text-[13px]">Tren / Media Sosial</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Perbandingan Sosial</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Keinginan Memiliki</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Beli Sekarang</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Uang Tidak Cukup</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Pinjol/Paylater</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Cicilan</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Pendapatan Tertekan</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px]">Pinjaman Baru</div>
+      <div class="flow-arrow text-center text-sm">↓</div>
+      <div class="flow-step p-2.5 text-center text-[13px] border-rust text-rust font-medium">Lingkaran Utang</div>
+    </div>
+    <p class="fade-up text-stone text-[14px] mt-6 max-w-xl">Literasi masyarakat perlu mengubah pola pikir dari <span class="italic">\u201cSaya ingin → bagaimana cara mendapatkan uang?\u201d</span> menjadi <span class="text-ink font-medium italic">\u201cApakah saya membutuhkan → apakah saya mampu → apa risikonya → baru mengambil keputusan?\u201d</span></p>
+  </div>
+</section>
+
+<!-- ================= MODUL 15 — EKONOMI RUMAH TANGGA ================= -->
+<section id="modul-15" class="bg-navy-deep text-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust-light mb-3">Modul 15 — Dimensi Sosial, Budaya &amp; Ekonomi</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Dimensi Ekonomi Rumah Tangga</h2>
+      <p class="text-cream/60 text-[14px] mt-4 leading-relaxed">Sebelum mengambil pinjaman online, seseorang perlu mengetahui kondisi ekonominya secara objektif.</p>
+    </div>
+    <div class="fade-up overflow-x-auto mb-10">
+      <table class="data-table dark min-w-[480px]">
+        <thead><tr><th>Komponen</th><th>Pertanyaan</th></tr></thead>
+        <tbody>
+          <tr><td>Pendapatan</td><td>Berapa pendapatan bersih setiap bulan?</td></tr>
+          <tr><td>Pendapatan tambahan</td><td>Apakah bersifat tetap atau tidak tetap?</td></tr>
+          <tr><td>Kebutuhan pokok</td><td>Berapa biaya makanan, tempat tinggal, listrik, pendidikan, kesehatan?</td></tr>
+          <tr><td>Utang lama</td><td>Berapa total cicilan yang sedang berjalan?</td></tr>
+          <tr><td>Tanggungan</td><td>Berapa anggota keluarga yang harus dibiayai?</td></tr>
+          <tr><td>Dana darurat</td><td>Apakah tersedia dana untuk keadaan mendesak?</td></tr>
+          <tr><td>Pinjaman baru</td><td>Berapa cicilan pinjaman yang akan ditambahkan?</td></tr>
+          <tr><td>Sisa pendapatan</td><td>Berapa uang yang tersisa setelah seluruh kebutuhan?</td></tr>
+          <tr><td>Risiko pendapatan</td><td>Apa yang terjadi jika pendapatan berkurang?</td></tr>
+          <tr><td>Kemampuan membayar</td><td>Apakah cicilan dapat dibayar sampai selesai?</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="fade-up grid lg:grid-cols-[1fr_1.2fr] gap-8 items-start">
+      <div>
+        <p class="eyebrow text-cream/40 mb-3">Rumus Sederhana \u201cMampu atau Tidak?\u201d</p>
+        <div class="bg-navy p-6 space-y-1 text-[14px]">
+          <p>Pendapatan rumah tangga</p>
+          <p class="text-cream/50">− Kebutuhan pokok</p>
+          <p class="text-cream/50">− Cicilan/utang yang sudah ada</p>
+          <p class="text-cream/50">− Kebutuhan wajib lainnya</p>
+          <p class="border-t border-white/15 pt-2 mt-2 font-medium text-rust-light">= Sisa kemampuan keuangan</p>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow text-cream/40 mb-3">Contoh Perhitungan</p>
+        <div class="overflow-x-auto">
+          <table class="data-table dark min-w-[380px]">
+            <tbody>
+              <tr><td>Pendapatan rumah tangga</td><td>Rp5.000.000</td></tr>
+              <tr><td>Kebutuhan pokok</td><td>Rp3.000.000</td></tr>
+              <tr><td>Cicilan lama</td><td>Rp750.000</td></tr>
+              <tr><td>Kebutuhan wajib lainnya</td><td>Rp500.000</td></tr>
+              <tr><td class="font-medium">Sisa</td><td class="font-medium">Rp750.000</td></tr>
+              <tr><td>Cicilan pinjaman baru</td><td>Rp1.000.000</td></tr>
+              <tr><td class="text-rust-light font-medium">Kondisi</td><td class="text-rust-light font-medium">Tidak sehat/tidak mampu</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[12px] text-cream/40 mt-3">Catatan: angka contoh hanya untuk edukasi, bukan batas legal kemampuan berutang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODUL 16 — TABEL TERPADU ================= -->
+<section id="modul-16" class="bg-cream border-b border-line scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="fade-up mb-8 max-w-2xl">
+      <p class="eyebrow text-rust mb-3">Modul 16 — Dimensi Sosial, Budaya &amp; Ekonomi</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink leading-tight">Tabel Terpadu: Meminjam atau Tidak?</h2>
+      <p class="text-stone text-[14px] mt-4 leading-relaxed">Rangkuman seluruh pertimbangan dari dimensi hukum, digital, sosial, budaya, dan ekonomi dalam satu tabel.</p>
+    </div>
+    <div class="fade-up overflow-x-auto">
+      <table class="data-table light min-w-[560px]">
+        <thead><tr><th>Pertimbangan</th><th>Kondisi Aman</th><th>Kondisi Berisiko</th></tr></thead>
+        <tbody>
+          <tr><td>Tujuan</td><td>Kebutuhan penting/produktif</td><td>Gaya hidup/gengsi</td></tr>
+          <tr><td>Pendapatan</td><td>Stabil</td><td>Tidak stabil</td></tr>
+          <tr><td>Utang lama</td><td>Tidak ada/terkendali</td><td>Banyak</td></tr>
+          <tr><td>Cicilan baru</td><td>Terjangkau</td><td>Menghabiskan sisa pendapatan</td></tr>
+          <tr><td>Keluarga</td><td>Mengetahui dan memahami</td><td>Disembunyikan</td></tr>
+          <tr><td>Lingkungan</td><td>Tidak memberikan tekanan</td><td>Mengikuti teman/tren</td></tr>
+          <tr><td>Budaya konsumsi</td><td>Terkendali</td><td>Impulsif</td></tr>
+          <tr><td>Dana darurat</td><td>Tersedia</td><td>Tidak tersedia</td></tr>
+          <tr><td>Legalitas</td><td>Penyelenggara resmi</td><td>Tidak jelas/ilegal</td></tr>
+          <tr><td>Data pribadi</td><td>Dilindungi</td><td>Diminta secara mencurigakan</td></tr>
+          <tr><td>Perjanjian</td><td>Dipahami</td><td>Tidak dibaca</td></tr>
+          <tr><td>Rencana pembayaran</td><td>Jelas</td><td>Tidak ada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fade-up mt-6 grid sm:grid-cols-2 gap-4 max-w-2xl">
+      <div class="border border-leaf bg-leaf-light p-5">
+        <p class="text-leaf font-serif font-semibold text-sm mb-1">Sebagian besar \u201cAman\u201d</p>
+        <p class="text-[13px] text-ink/70">Pinjaman masih dapat dipertimbangkan secara hati-hati.</p>
+      </div>
+      <div class="border border-alert bg-alert-light p-5">
+        <p class="text-alert font-serif font-semibold text-sm mb-1">Sebagian besar \u201cBerisiko\u201d</p>
+        <p class="text-[13px] text-ink/70">Sebaiknya TIDAK MEMINJAM dan cari alternatif penyelesaian kebutuhan.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -233,12 +751,19 @@
       <h2 class="font-serif text-3xl font-semibold text-ink">Istilah penting</h2>
     </div>
     <div class="border-t border-line">
-      <details class="group border-b border-line py-5">
+      <details class="group border-b border-line py-5" open>
         <summary class="flex items-center justify-between gap-4">
           <span class="font-serif text-[17px] font-medium text-ink">OJK (Otoritas Jasa Keuangan)</span>
           <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
         </summary>
         <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Lembaga negara yang mengawasi dan mengizinkan operasional lembaga keuangan, termasuk fintech pinjaman online, di Indonesia.</p>
+      </details>
+      <details class="group border-b border-line py-5">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-serif text-[17px] font-medium text-ink">LPBBTI</span>
+          <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+        </summary>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Layanan Pendanaan Bersama Berbasis Teknologi Informasi — istilah resmi OJK untuk pinjaman online/fintech P2P lending, diatur dalam POJK No. 40 Tahun 2024.</p>
       </details>
       <details class="group border-b border-line py-5">
         <summary class="flex items-center justify-between gap-4">
@@ -263,10 +788,17 @@
       </details>
       <details class="group border-b border-line py-5">
         <summary class="flex items-center justify-between gap-4">
+          <span class="font-serif text-[17px] font-medium text-ink">Satgas PASTI</span>
+          <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
+        </summary>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Satuan Tugas Pemberantasan Aktivitas Keuangan Ilegal — tim gabungan lintas lembaga yang berkala memblokir entitas pinjaman online ilegal.</p>
+      </details>
+      <details class="group border-b border-line py-5">
+        <summary class="flex items-center justify-between gap-4">
           <span class="font-serif text-[17px] font-medium text-ink">Sanksi Pidana Pinjol Ilegal</span>
           <span class="accordion-icon shrink-0 text-rust text-xl leading-none font-mono">+</span>
         </summary>
-        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Operator pinjol ilegal dapat dijerat pasal terkait UU ITE, perlindungan data pribadi, dan/atau pengancaman, dengan sanksi pidana dan denda.</p>
+        <p class="text-[14px] text-stone mt-3 leading-relaxed pr-8">Operator pinjol ilegal dapat dijerat pasal terkait UU ITE, UU Pelindungan Data Pribadi, dan/atau pengancaman, dengan sanksi pidana dan denda.</p>
       </details>
     </div>
   </div>
@@ -277,7 +809,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 flex flex-wrap items-center justify-between gap-6">
     <div>
       <p class="eyebrow text-rust-light mb-3">Langkah selanjutnya</p>
-      <h2 class="font-serif text-2xl sm:text-3xl font-semibold max-w-lg">Sudah paham dasarnya? Saatnya cek legalitas tawaran yang Anda hadapi.</h2>
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold max-w-lg">Sudah paham dasarnya? Saatnya jalankan checklist praktis sebelum meminjam.</h2>
     </div>
     <a href="cek-putuskan.html" class="btn-focus inline-flex items-center gap-2 bg-rust hover:bg-rust-dark transition text-white font-mono text-xs tracking-widest2 uppercase px-6 py-4 shrink-0">
       Ke Cek &amp; Putuskan
@@ -361,7 +893,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
   revealEls.forEach((el) => observer.observe(el));
 </script>
 </body>
